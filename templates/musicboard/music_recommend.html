@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+
+<div class="loading">
+<div class="container my-3">
+
+    <!-- 사용자오류 표시 -->
+    {% if messages %}
+    <div class="alert alert-danger my-3" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <h2 class="border-bottom py-2">{{ music.subject }}`s Chord Based Recommendation List</h2>
+
+    <div class="row my-3">
+
+        <h5><strong>Based on Chord Progression</strong></h5>
+
+        <div class="col-11"> <!-- 음악 영역 -->
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="my-3 py-2 text-center">
+                        {% for name, music in double_chord_recommend_dict.items %}
+                            <p><h5>{{ music.ranking }}: {{ name }}</h5></p>
+                            <P><!-- Not Allowed Attribute Filtered ( allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") --><iframe width="560" height="315" src="{{ music.iframe_url }}" frameborder="0" allowfullscreen=""></iframe></P>
+                            <p><strong>Same Progression Count : {{ music.total_count }}</strong></p>
+<!--                            <p><strong>Same Progression info : {{ music.chord_count }}</strong></p>-->
+                            <br><br>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <h5><strong>Based on Chord Progression</strong></h5>
+        <div class="col-11"> <!-- 음악 영역 -->
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="my-3 py-2 text-center">
+                        {% for name, music in single_chord_recommend_dict.items %}
+                            <p><h5>{{ music.ranking }}: {{ name }}</h5></p>
+                            <P><!-- Not Allowed Attribute Filtered ( allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") --><iframe width="560" height="315" src="{{ music.iframe_url }}" frameborder="0" allowfullscreen=""></iframe></P>
+                            <p><strong>Same Chord Count : {{ music.total_count }}</strong></p>
+                            <br><br>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

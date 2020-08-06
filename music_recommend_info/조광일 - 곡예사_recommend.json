@@ -1,0 +1,46 @@
+{
+    "double_chord": {
+        "Black Out": {
+            "total_count": 0,
+            "chord_count": {},
+            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
+        },
+        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
+            "total_count": 0,
+            "chord_count": {},
+            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+        },
+        "Dear Name (\uc774\ub984\uc5d0\uac8c)": {
+            "total_count": 0,
+            "chord_count": {},
+            "url": "https://www.youtube.com/watch?v=JSOBF_WhqEM"
+        }
+    },
+    "single_chord": {
+        "dlwlrma (\uc774 \uc9c0\uae08)": {
+            "total_count": 11,
+            "chord_count": {
+                "E/F#": 1,
+                "Amaj7": 9,
+                "A6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Through the Night(\ubc24\ud3b8\uc9c0)": {
+            "total_count": 9,
+            "chord_count": {
+                "Fm": 2,
+                "Abm6": 7
+            },
+            "url": "https://www.youtube.com/watch?v=BzYnNdJhZQw"
+        },
+        "Full Stop (\ub9c8\uce68\ud45c)g": {
+            "total_count": 2,
+            "chord_count": {
+                "E/F#": 1,
+                "A6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+        }
+    }
+}

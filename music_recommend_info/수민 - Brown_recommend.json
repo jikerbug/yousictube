@@ -1,0 +1,80 @@
+{
+    "double_chord": {
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 7,
+            "chord_count": {
+                "Bbmaj7-Gm": 3,
+                "Gm-C": 1,
+                "C-Dm": 1,
+                "Am7-Dm7": 1,
+                "Dm7-Gm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
+            "total_count": 6,
+            "chord_count": {
+                "Em7-C6": 4,
+                "Bm7-Em7": 1,
+                "Cmaj7-Bm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 5,
+            "chord_count": {
+                "C6-Dm7": 1,
+                "Am7-Dm7": 4
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        }
+    },
+    "single_chord": {
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 43,
+            "chord_count": {
+                "C": 3,
+                "Bbmaj7": 11,
+                "Gm": 5,
+                "Dm": 1,
+                "Am7": 8,
+                "Gm7": 7,
+                "F/A": 2,
+                "Dm7": 1,
+                "Bb/C": 1,
+                "Bb6": 1,
+                "Bmaj7": 2,
+                "Em7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 33,
+            "chord_count": {
+                "C": 10,
+                "Dm7": 10,
+                "Em7": 2,
+                "C6": 2,
+                "Am7": 5,
+                "Gm7": 1,
+                "E7": 2,
+                "Am": 1
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        },
+        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
+            "total_count": 31,
+            "chord_count": {
+                "C6": 8,
+                "Em7": 6,
+                "Dm7": 1,
+                "Am7": 4,
+                "Bm7": 3,
+                "Cmaj7": 6,
+                "Bb6": 1,
+                "E7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+        }
+    }
+}

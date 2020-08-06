@@ -1,0 +1,14 @@
+.comment {
+    border-top:dotted 1px #ddd;
+    font-size:0.8em;
+}
+@media (max-width: 991px){
+    .unimportant{
+        display: none;
+    }
+}
+@media (max-width: 575px){
+    .second-unimportant{
+        display: none;
+    }
+}

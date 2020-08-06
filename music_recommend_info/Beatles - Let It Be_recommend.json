@@ -1,0 +1,72 @@
+{
+    "double_chord": {
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 8,
+            "chord_count": {
+                "Am-F6": 1,
+                "Am7-Fmaj7": 2,
+                "Am-G6": 3,
+                "Am-C/G": 2
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 3,
+            "chord_count": {
+                "C-F": 2,
+                "F-C7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 1,
+            "chord_count": {
+                "F-C": 1
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        }
+    },
+    "single_chord": {
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 42,
+            "chord_count": {
+                "Fmaj7": 7,
+                "Am7": 14,
+                "Em7": 6,
+                "Am": 7,
+                "F6": 3,
+                "G6": 3,
+                "C/G": 2
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 33,
+            "chord_count": {
+                "C": 3,
+                "F": 7,
+                "Fmaj7": 9,
+                "Am7": 8,
+                "C7": 4,
+                "F/G": 1,
+                "Em7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 25,
+            "chord_count": {
+                "C": 10,
+                "C/G": 2,
+                "Em7": 2,
+                "Am7": 5,
+                "F": 1,
+                "F6": 2,
+                "Am": 1,
+                "Fmaj7": 1,
+                "F/G": 1
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        }
+    }
+}

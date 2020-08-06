@@ -1,0 +1,76 @@
+{
+    "double_chord": {
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 5,
+            "chord_count": {
+                "C7-Am7": 2,
+                "Gm7-C7": 1,
+                "Am7-Dm7": 1,
+                "Dm7-Gm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 5,
+            "chord_count": {
+                "Am7-Dm7": 4,
+                "F6-Am7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Through the Night(\ubc24\ud3b8\uc9c0)": {
+            "total_count": 3,
+            "chord_count": {
+                "Gm7-C7": 3
+            },
+            "url": "https://www.youtube.com/watch?v=BzYnNdJhZQw"
+        }
+    },
+    "single_chord": {
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 50,
+            "chord_count": {
+                "Bbmaj7": 11,
+                "Gm": 5,
+                "Dm": 1,
+                "Fmaj7": 9,
+                "Am7": 8,
+                "Gm7": 7,
+                "C7": 4,
+                "Dm7": 1,
+                "Bb6": 1,
+                "F/G": 1,
+                "Em7b5/D": 1,
+                "Em7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 40,
+            "chord_count": {
+                "Fmaj7": 7,
+                "Am7": 14,
+                "Em7": 6,
+                "Am": 7,
+                "F6": 3,
+                "A": 1,
+                "D7": 1,
+                "Dm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Through the Night(\ubc24\ud3b8\uc9c0)": {
+            "total_count": 28,
+            "chord_count": {
+                "Em7": 1,
+                "Gm7": 9,
+                "C7": 5,
+                "Bb6": 3,
+                "Ebmaj7": 2,
+                "Abm6": 7,
+                "Gm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=BzYnNdJhZQw"
+        }
+    }
+}

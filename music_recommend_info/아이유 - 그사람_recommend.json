@@ -1,0 +1,90 @@
+{
+    "double_chord": {
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 11,
+            "chord_count": {
+                "Fmaj7-Em": 1,
+                "Em-Am7": 2,
+                "Am-F6": 1,
+                "Am7-Fmaj7": 2,
+                "E-Am7": 2,
+                "C/D-Am7": 1,
+                "Em7-Am7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 6,
+            "chord_count": {
+                "Am7-Dm7": 4,
+                "E7-Am": 1,
+                "Fmaj7-E7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        },
+        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
+            "total_count": 4,
+            "chord_count": {
+                "Fmaj7-Em7": 2,
+                "E7-Am7": 1,
+                "Cmaj7-Fmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+        }
+    },
+    "single_chord": {
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 46,
+            "chord_count": {
+                "Fmaj7": 7,
+                "Em": 3,
+                "Am7": 14,
+                "Em7": 6,
+                "Am": 7,
+                "F6": 3,
+                "A": 1,
+                "D7": 1,
+                "E": 2,
+                "C/D": 1,
+                "Dm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 42,
+            "chord_count": {
+                "C": 3,
+                "F": 7,
+                "Dm": 1,
+                "Fmaj7": 9,
+                "Am7": 8,
+                "Gm7": 7,
+                "D7/F#": 1,
+                "Dm7": 1,
+                "Gm6": 2,
+                "Bb/C": 1,
+                "F/G": 1,
+                "Em7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Palette(\ud314\ub808\ud2b8) (Feat. GDRAGON)": {
+            "total_count": 37,
+            "chord_count": {
+                "C": 10,
+                "Dm7": 10,
+                "Em7": 2,
+                "Am7": 5,
+                "C/E": 1,
+                "F": 1,
+                "Gm7": 1,
+                "F6": 2,
+                "E7": 2,
+                "Am": 1,
+                "Fmaj7": 1,
+                "F/G": 1
+            },
+            "url": "https://www.youtube.com/watch?v=d9IxdwEFk1c"
+        }
+    }
+}

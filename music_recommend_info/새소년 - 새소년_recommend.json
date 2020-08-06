@@ -1,0 +1,61 @@
+{
+    "double_chord": {
+        "Full Stop (\ub9c8\uce68\ud45c)g": {
+            "total_count": 3,
+            "chord_count": {
+                "Emaj7-F#7": 1,
+                "F#7-B": 2
+            },
+            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+        },
+        "dlwlrma (\uc774 \uc9c0\uae08)": {
+            "total_count": 1,
+            "chord_count": {
+                "Emaj7-B": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
+        },
+        "Black Out": {
+            "total_count": 0,
+            "chord_count": {},
+            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
+        }
+    },
+    "single_chord": {
+        "Full Stop (\ub9c8\uce68\ud45c)g": {
+            "total_count": 33,
+            "chord_count": {
+                "B": 8,
+                "E6": 2,
+                "Emaj7": 6,
+                "F#7": 6,
+                "E": 7,
+                "Bmaj7": 2,
+                "Bm": 1,
+                "F#": 1
+            },
+            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+        },
+        "dlwlrma (\uc774 \uc9c0\uae08)": {
+            "total_count": 23,
+            "chord_count": {
+                "E6": 7,
+                "E": 5,
+                "F#7": 6,
+                "Emaj7": 2,
+                "B": 2,
+                "F#": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 7,
+            "chord_count": {
+                "F#": 3,
+                "Bmaj7": 2,
+                "B": 2
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        }
+    }
+}
