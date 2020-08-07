@@ -19,29 +19,90 @@ from PIL import Image, ImageDraw, ImageFont
 # pip install pillow
 
 
-JSON_PATH = '../data.json'
+JSON_PATH = 'data.json'
 
 
 class _Chord_Classification_Service:
     _instance = None
 
-    # 유튜브 url로부터 시간별 코드리스트, 비트리스트, 유튜브 추출 파일 이름을 반환하는 함수
-    def load_audio_data_from_url(self, url):
+    def add_recommend_database(self, url, json_path, working_directory_path):
+
+        SAVE_PATH = '/'.join(os.getcwd().split('/')[:3]) + '/' + working_directory_path
         ydl_opts = {
             'format': 'best',
+            'outtmpl': SAVE_PATH + '/%(title)s.%(ext)s',
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
         # 확장자 변경
-        files = glob.glob("*.mp4")
+        files = glob.glob(working_directory_path + "/*.mp4")
         audio_file_name = ''
 
         signal, sr = 0, 0
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = filename[0]
+                audio_file_name = str(filename[0].split(working_directory_path + '\\')[1])
+                signal, sr = librosa.load(x)
+                os.remove(x)
+
+        # load audio file
+        predicted_chord_list = vamp.collect(signal, sr, "nnls-chroma:chordino")
+        chord_list_with_timestamp = predicted_chord_list["list"]
+
+        chord_list = []
+        for i in chord_list_with_timestamp:
+            chord_list.append(i['label'])
+
+        double_chord_list_with_url = []
+
+        for idx in range(len(chord_list) - 1):
+            if chord_list[idx] != 'N' and chord_list[idx + 1] != 'N':
+                double_chord = chord_list[idx] + '-' + chord_list[idx + 1]
+                double_chord_list_with_url.append(double_chord)
+
+        double_chord_list_with_url.append(double_chord_list_with_url[-1].split('-')[-1] + '-' + url)
+
+        # dict_key_music_name = ''
+        # for idx in range(len(audio_file_name.split('-')) - 1):
+        #     dict_key_music_name += audio_file_name.split('-')[idx]
+        dict_key_music_name = audio_file_name
+
+        with open(json_path, 'r', encoding='utf-8') as f:
+            chord_list_dict = json.load(f)
+
+
+        if dict_key_music_name not in chord_list_dict:
+            chord_list_dict[dict_key_music_name] = double_chord_list_with_url
+            with open(json_path, "w", encoding='utf-8') as fp:
+                json.dump(chord_list_dict, fp, indent=4, ensure_ascii=False)
+
+
+
+
+
+
+    # 유튜브 url로부터 시간별 코드리스트, 비트리스트, 유튜브 추출 파일 이름을 반환하는 함수
+    def load_audio_data_from_url(self, url, working_directory_path):
+
+        SAVE_PATH = '/'.join(os.getcwd().split('/')[:3]) + '/' + working_directory_path
+        ydl_opts = {
+            'format': 'best',
+            'outtmpl': SAVE_PATH + '/%(title)s.%(ext)s',
+        }
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+
+        # 확장자 변경
+        files = glob.glob(working_directory_path + "/*.mp4")
+        audio_file_name = ''
+
+        signal, sr = 0, 0
+        for x in files:
+            if not os.path.isdir(x):
+                filename = os.path.splitext(x)
+                audio_file_name = filename[0].split(working_directory_path + '\\')[1]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
@@ -63,9 +124,9 @@ class _Chord_Classification_Service:
         return chord_list, beat_list, audio_file_name.split('-')[0]
 
     # load_audio_data_from_url로부터 정보를 받아와 악보를 저장하는 함수
-    def make_music_sheet(self, url, title):
+    def make_music_sheet(self, url, title, working_directory_path):
 
-        chord_list, beat_list, audio_file_name = self.load_audio_data_from_url(url)
+        chord_list, beat_list, audio_file_name = self.load_audio_data_from_url(url, working_directory_path)
         # print(chord_list)
         # print(beat_list)
         # print(len(beat_list))
@@ -123,7 +184,7 @@ class _Chord_Classification_Service:
         # ./ batang.ttc
         print(sheet_height * 90 / sheet_width)
         if sheet_height * 90 / sheet_width > 6:
-            sheet_width += int(sheet_height * 90 / sheet_width) * 20
+            sheet_width += int(sheet_height * 90 / sheet_width) * 23
         font = ImageFont.truetype('C:/Windows/Fonts/batang.ttc', 45)
         img = Image.new(mode='RGB', size=(sheet_width, sheet_height * 90), color='#FFF')
         draw = ImageDraw.Draw(img)
@@ -135,13 +196,13 @@ class _Chord_Classification_Service:
 
         return music_sheet_path
 
-    def get_top_three_similar_chord_music(self, url, music_subject, json_path):
+    def get_top_three_similar_chord_music(self, url, music_subject, json_path, working_directory_path):
 
         # 1. 연속코드 비교
 
         # 1. 중복없는, 코드 종류 리스트 저장 ***  이거로 기존의 chord_list를 대체
         # 2. 저장된 데이터에서 비교!
-        chord_list_with_timestamp, beat_list, audio_file_name = self.load_audio_data_from_url(url)
+        chord_list_with_timestamp, beat_list, audio_file_name = self.load_audio_data_from_url(url, working_directory_path)
         # print(chord_list_with_timestamp)
 
         double_chord_list = self.get_double_chord_list(chord_list_with_timestamp)

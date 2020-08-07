@@ -1,0 +1,72 @@
+{
+    "double_chord": {
+        "Square (2017)": {
+            "total_count": 7,
+            "chord_count": {
+                "Bbm7-Eb": 2,
+                "Fm7-Bbm7": 2,
+                "Bbm7-Abmaj7": 2,
+                "Fm7-Cm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=_ZkUb7iIOqQ"
+        },
+        "Black Out": {
+            "total_count": 2,
+            "chord_count": {
+                "Ab6-Eb": 2
+            },
+            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
+        },
+        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
+            "total_count": 0,
+            "chord_count": {},
+            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+        }
+    },
+    "single_chord": {
+        "Square (2017)": {
+            "total_count": 57,
+            "chord_count": {
+                "Abmaj7": 10,
+                "C#maj7": 5,
+                "Ab": 13,
+                "Bbm7": 6,
+                "Eb": 6,
+                "Ab6": 1,
+                "C#6": 7,
+                "Cm7": 3,
+                "Fm7": 3,
+                "Eb/F": 1,
+                "Cm": 1,
+                "Bbm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=_ZkUb7iIOqQ"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Through the Night(\ubc24\ud3b8\uc9c0)": {
+            "total_count": 37,
+            "chord_count": {
+                "Ab": 1,
+                "Cm7": 7,
+                "Fm": 2,
+                "Fm7": 7,
+                "Eb": 7,
+                "Abmaj7": 10,
+                "Bbm7": 2,
+                "Ab6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=BzYnNdJhZQw"
+        },
+        "Black Out": {
+            "total_count": 33,
+            "chord_count": {
+                "Abmaj7": 9,
+                "Eb": 15,
+                "Ab6": 4,
+                "Fm7b5": 1,
+                "C#6": 2,
+                "Ab": 2
+            },
+            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
+        }
+    }
+}

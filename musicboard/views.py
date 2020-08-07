@@ -22,6 +22,8 @@ from .forms import MusicForm, CommentForm
 
 
 # Create your views here.
+
+JSON_PATH = 'data_big.json'
 def index(request):
     """
     musicboard 목록 출력
@@ -86,6 +88,8 @@ def music_create(request):
             music.author = request.user  # 추가한 속성 author 적용
             music.create_date = timezone.now()
             music.save()
+
+
             return redirect('musicboard:index')
     else:
         form = MusicForm()
@@ -210,7 +214,7 @@ def music_download_sheet(request, music_id):
     music_sheet_path =''
     music_sheet_name =''
     if(not os.path.isfile('music_sheet_img/' + music.subject + ".png")):
-        music_sheet_path = ccs.make_music_sheet(music.url, music.subject)
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, 'audio_download/make_sheet')
         music_sheet_name = music.subject + ".png"
     else:
         music_sheet_path = 'music_sheet_img/' + music.subject + ".png"
@@ -238,7 +242,8 @@ def music_recommend_music(request, music_id):
     double_chord_recommend_dict = {}
     single_chord_recommend_dict = {}
     if (not os.path.isfile(info_path)):
-        double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url, music.subject, 'data.json')
+        double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url, music.subject, JSON_PATH,
+                                                                                                         'audio_download/recommend_music')
     else:
         with open(info_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -276,7 +281,14 @@ def music_update_recommend_music(request, music_id):
 
     double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url,
                                                                                                          music.subject,
-                                                                                                         'data.json')
+                                                                                                         JSON_PATH,
+                                                                                                     'audio_download/update_recommend_music')
+
+    if(not music.isAdded):
+        ccs.add_recommend_database(music.url, JSON_PATH, 'audio_download/update_recommend_music')
+        music.isAdded = True
+        music.save()
+
     for value in double_chord_recommend_dict.values():
         value['iframe_url'] = value['url'].replace("watch?v=", "embed/")
 
@@ -305,5 +317,8 @@ def music_sheet_loading(request, music_id):
 
     context = {'music': music, 'iframeUrl': iframeUrl}
     return render(request, 'musicboard/music_sheet_loading.html', context)
+
+
+
 
 #-------------------------------------[edited]--------------------------------------------#

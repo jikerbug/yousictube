@@ -1,0 +1,123 @@
+{
+    "double_chord": {
+        "Hoody (\ud6c4\ub514) - Sunshine (Feat. Crush) Official Music Video (ENG)": {
+            "total_count": 99,
+            "chord_count": {
+                "Gmaj7-Aaug": 3,
+                "Aaug-F#m7": 9,
+                "F#m7-B7": 9,
+                "B7-Gmaj7": 3,
+                "Gmaj7-A6": 2,
+                "A6-Am": 3,
+                "Am-Gmaj7": 1,
+                "Am-Em7": 2,
+                "Em7-A": 3,
+                "A-F#m7": 5,
+                "F#m7-Em7": 8,
+                "Em7-F#m7": 5,
+                "Em7-Aaug": 6,
+                "B7-Em7": 4,
+                "Em7-Bm7b5/A": 1,
+                "Bm7b5/A-F#m7": 3,
+                "F#m7-Am": 2,
+                "Am-Bm7": 2,
+                "Bm7-Bm7b5/A": 1,
+                "B7-D/E": 1,
+                "D/E-Em": 1,
+                "Em-A": 2,
+                "Em7-A6": 1,
+                "B7-Fmaj7": 1,
+                "Fmaj7-G6": 1,
+                "G6-Am7": 2,
+                "Am7-G6": 1,
+                "G6-A7": 1,
+                "A7-F": 1,
+                "F-G6": 1,
+                "Am7-G7": 1,
+                "G7-Am7": 1,
+                "Am7-Bm7": 1,
+                "Bm7-Em7": 1,
+                "Bm7-A": 1,
+                "A-Bm": 1,
+                "Bm-Bm7b5/A": 1,
+                "F#m7-Em": 1,
+                "F#m7-Bm7": 1,
+                "Bm7-Aaug": 1,
+                "F#m7-Cm6": 1,
+                "Cm6-Em7": 1,
+                "Aaug-A": 1,
+                "A-B7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=BNYEafliTCs"
+        },
+        "Hero The Band  Are You Happy Now (Official Music Video)": {
+            "total_count": 18,
+            "chord_count": {
+                "Bm7-A": 18
+            },
+            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
+        },
+        "Justin Bieber  Yummy (Official Video)": {
+            "total_count": 16,
+            "chord_count": {
+                "G7-Am7": 10,
+                "Am7-G7": 6
+            },
+            "url": "https://www.youtube.com/watch?v=8EJ3zbKTWQ8"
+        }
+    },
+    "single_chord": {
+        "Hoody (\ud6c4\ub514) - Sunshine (Feat. Crush) Official Music Video (ENG)": {
+            "total_count": 100,
+            "chord_count": {
+                "Gmaj7": 5,
+                "Aaug": 10,
+                "F#m7": 22,
+                "B7": 10,
+                "A6": 3,
+                "Am": 5,
+                "Em7": 16,
+                "A": 7,
+                "Bm7b5/A": 3,
+                "Bm7": 4,
+                "D/E": 1,
+                "Em": 2,
+                "Fmaj7": 1,
+                "G6": 3,
+                "Am7": 3,
+                "A7": 1,
+                "F": 1,
+                "G7": 1,
+                "Bm": 1,
+                "Cm6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=BNYEafliTCs"
+        },
+        "Jonas Brothers  X ft. KAROL G": {
+            "total_count": 56,
+            "chord_count": {
+                "Am": 11,
+                "Em": 28,
+                "Am7": 12,
+                "Em7": 2,
+                "Bm7": 2,
+                "Bm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=9hGdmEwBwbg"
+        },
+        "Camila Cabello  Shameless": {
+            "total_count": 55,
+            "chord_count": {
+                "Am": 9,
+                "Aaug": 1,
+                "Em": 22,
+                "A": 2,
+                "G6": 9,
+                "A6": 9,
+                "A7": 1,
+                "Am7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=Fp_P_e1cPOE"
+        }
+    }
+}

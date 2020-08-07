@@ -1,0 +1,84 @@
+{
+    "double_chord": {
+        "Dear Name (\uc774\ub984\uc5d0\uac8c)": {
+            "total_count": 11,
+            "chord_count": {
+                "A-D": 1,
+                "D-F#m7": 3,
+                "G6-D/F#": 1,
+                "Bm-D": 1,
+                "D-Em7": 3,
+                "Em7-D": 1,
+                "Em7-A7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=JSOBF_WhqEM"
+        },
+        "dlwlrma (\uc774 \uc9c0\uae08)": {
+            "total_count": 1,
+            "chord_count": {
+                "C#m-F#7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
+        },
+        "Black Out": {
+            "total_count": 0,
+            "chord_count": {},
+            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
+        }
+    },
+    "single_chord": {
+        "Dear Name (\uc774\ub984\uc5d0\uac8c)": {
+            "total_count": 64,
+            "chord_count": {
+                "A": 2,
+                "D": 8,
+                "Bm7": 6,
+                "F#m7": 4,
+                "G": 4,
+                "Em7": 10,
+                "D/F#": 9,
+                "G6": 4,
+                "G/A": 5,
+                "A7": 4,
+                "F#m": 1,
+                "D7": 2,
+                "Em": 2,
+                "Bm": 1,
+                "Gmaj7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=JSOBF_WhqEM"
+        },
+        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
+            "total_count": 32,
+            "chord_count": {
+                "G6": 5,
+                "Em7": 6,
+                "B7": 4,
+                "C#m7b5": 3,
+                "Am7": 4,
+                "Bm7": 3,
+                "A7": 2,
+                "Gmaj7": 1,
+                "G/A": 1,
+                "E7": 2,
+                "Bm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+        },
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 31,
+            "chord_count": {
+                "Em": 3,
+                "Am7": 14,
+                "Em7": 6,
+                "A": 1,
+                "D": 1,
+                "D7": 1,
+                "G6": 3,
+                "C/D": 1,
+                "D6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        }
+    }
+}

@@ -1,5 +1,27 @@
 {
     "double_chord": {
+        "": {
+            "total_count": 69,
+            "chord_count": {
+                "Emaj7-Bmaj7": 20,
+                "Bmaj7-Emaj7": 18,
+                "Bmaj7-E6": 4,
+                "E6-Emaj7": 4,
+                "Emaj7-B": 4,
+                "B-E6": 1,
+                "B-Emaj7": 5,
+                "Emaj7-E6": 3,
+                "E6-B": 1,
+                "E6-Bmaj7": 3,
+                "Emaj7-F#7": 1,
+                "F#7-B": 1,
+                "Bmaj7-E": 1,
+                "E-Bmaj7": 1,
+                "Bmaj7-F#": 1,
+                "F#-Bm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=HDEng7Ln_sE"
+        },
         "Full Stop (\ub9c8\uce68\ud45c)g": {
             "total_count": 3,
             "chord_count": {
@@ -8,20 +30,29 @@
             },
             "url": "https://www.youtube.com/watch?v=ytapKNCMM"
         },
-        "dlwlrma (\uc774 \uc9c0\uae08)": {
-            "total_count": 1,
+        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
+            "total_count": 3,
             "chord_count": {
-                "Emaj7-B": 1
+                "F#-Bm": 3
             },
-            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
-        },
-        "Black Out": {
-            "total_count": 0,
-            "chord_count": {},
-            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
+            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
         }
     },
     "single_chord": {
+        "": {
+            "total_count": 70,
+            "chord_count": {
+                "Emaj7": 28,
+                "Bmaj7": 24,
+                "E6": 8,
+                "B": 6,
+                "F#7": 1,
+                "E": 1,
+                "F#": 1,
+                "Bm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=HDEng7Ln_sE"
+        },
         "Full Stop (\ub9c8\uce68\ud45c)g": {
             "total_count": 33,
             "chord_count": {
@@ -36,26 +67,14 @@
             },
             "url": "https://www.youtube.com/watch?v=ytapKNCMM"
         },
-        "dlwlrma (\uc774 \uc9c0\uae08)": {
-            "total_count": 23,
+        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
+            "total_count": 24,
             "chord_count": {
-                "E6": 7,
-                "E": 5,
-                "F#7": 6,
-                "Emaj7": 2,
-                "B": 2,
-                "F#": 1
+                "F#": 4,
+                "Bm": 14,
+                "F#7": 6
             },
-            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
-        },
-        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
-            "total_count": 7,
-            "chord_count": {
-                "F#": 3,
-                "Bmaj7": 2,
-                "B": 2
-            },
-            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
         }
     }
 }

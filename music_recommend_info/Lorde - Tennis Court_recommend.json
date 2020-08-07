@@ -1,0 +1,103 @@
+{
+    "double_chord": {
+        "Lorde - Tennis Court (Flume Remix)": {
+            "total_count": 99,
+            "chord_count": {
+                "Am-Fmaj7": 5,
+                "Fmaj7-D7": 4,
+                "D7-Am": 7,
+                "Fmaj7-Am": 3,
+                "Am-F6": 7,
+                "F6-Am": 4,
+                "F6-D7": 3,
+                "Am-Bm7": 2,
+                "Bm7-Fmaj7": 2,
+                "Fmaj7-Am7": 3,
+                "Am7-Dm7": 3,
+                "Dm7-Em7": 9,
+                "Em7-Fmaj7": 11,
+                "Fmaj7-Dm7": 8,
+                "Em7-Am7": 1,
+                "Am7-Bm7": 1,
+                "Am-Bm": 1,
+                "Bm-Fmaj7": 1,
+                "Dm7-Dm6": 4,
+                "Dm6-Em7": 4,
+                "Am-Dm7": 1,
+                "Dm7-Am": 1,
+                "Bm7-F6": 1,
+                "F6-Dm7": 1,
+                "Fmaj7-Fdim": 2,
+                "Fdim-Dm7": 2,
+                "Em7-Fdim": 1,
+                "Fdim-Fmaj7": 1,
+                "Dm7-Fmaj7": 2,
+                "Fmaj7-G/A": 1,
+                "G/A-Dm7": 1,
+                "Fmaj7-Bm6": 1,
+                "Bm6-Dm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ATu1BiOPZA"
+        },
+        "Maroon 5  Girls Like You ft. Cardi B (Official Music Video)": {
+            "total_count": 15,
+            "chord_count": {
+                "Am-F6": 15
+            },
+            "url": "https://www.youtube.com/watch?v=aJOTlE1K90k"
+        },
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 11,
+            "chord_count": {
+                "Em7-Fmaj7": 2,
+                "Fmaj7-Am7": 4,
+                "Am-F6": 1,
+                "Fmaj7-D7": 1,
+                "Fmaj7-Dm7": 1,
+                "Em7-Am7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        }
+    },
+    "single_chord": {
+        "Lorde - Tennis Court (Flume Remix)": {
+            "total_count": 100,
+            "chord_count": {
+                "Am": 16,
+                "Fmaj7": 22,
+                "D7": 7,
+                "F6": 8,
+                "Bm7": 3,
+                "Am7": 4,
+                "Dm7": 17,
+                "Em7": 13,
+                "Bm": 1,
+                "Dm6": 4,
+                "Fdim": 3,
+                "G/A": 1,
+                "Bm6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ATu1BiOPZA"
+        },
+        "Maroon 5  Girls Like You ft. Cardi B (Official Music Video)": {
+            "total_count": 57,
+            "chord_count": {
+                "Am7": 11,
+                "F6": 26,
+                "Am": 20
+            },
+            "url": "https://www.youtube.com/watch?v=aJOTlE1K90k"
+        },
+        "Black Eyed Peas, Ozuna, J. Rey Soul  MAMACITA (Official Music Video)": {
+            "total_count": 40,
+            "chord_count": {
+                "Am7": 7,
+                "Dm7": 9,
+                "Am": 12,
+                "F6": 4,
+                "Fmaj7": 8
+            },
+            "url": "https://www.youtube.com/watch?v=4bP8wbt4SeA"
+        }
+    }
+}

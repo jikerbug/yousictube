@@ -1,0 +1,90 @@
+{
+    "double_chord": {
+        "Kygo & Whitney Houston  Higher Love (Official Video)JR49dyo": {
+            "total_count": 29,
+            "chord_count": {
+                "C#6-Ab": 2,
+                "Ab-Eb": 17,
+                "Bbm-Ab": 4,
+                "Ab-Bbm": 2,
+                "C#-Eb": 2,
+                "Bbm7-Ab": 1,
+                "Eb-C#maj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=y0E"
+        },
+        "Usher  I Cry (Official Video)": {
+            "total_count": 17,
+            "chord_count": {
+                "C#6-Ab": 5,
+                "Ab-Bbm7": 11,
+                "Ab-Eb": 1
+            },
+            "url": "https://www.youtube.com/watch?v=ulqyG0DbAGA"
+        },
+        "Anuel AA , Bad Bunny  Hasta Que Dios Diga ( Video Oficial )": {
+            "total_count": 16,
+            "chord_count": {
+                "C#6-Eb": 5,
+                "Fm7-Bbm7": 1,
+                "Bbm7-Ab": 1,
+                "Ab-C#maj7": 2,
+                "C#6-Ab": 2,
+                "Eb-C#maj7": 3,
+                "Bbm7-Eb": 1,
+                "Ab-Bbm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=nCzwGVKpjpo"
+        }
+    },
+    "single_chord": {
+        "Kygo & Whitney Houston  Higher Love (Official Video)JR49dyo": {
+            "total_count": 114,
+            "chord_count": {
+                "Eb": 26,
+                "C#6": 2,
+                "Ab": 38,
+                "C#": 32,
+                "Ab6": 3,
+                "Bbm": 5,
+                "Cm": 2,
+                "Abmaj7": 3,
+                "Bbm7": 1,
+                "C#maj7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=y0E"
+        },
+        "Anuel AA , Bad Bunny  Hasta Que Dios Diga ( Video Oficial )": {
+            "total_count": 63,
+            "chord_count": {
+                "C#6": 18,
+                "Eb": 19,
+                "Bbm": 7,
+                "C#maj7": 7,
+                "Bbm7": 4,
+                "C#": 1,
+                "Fm7": 1,
+                "Ab": 5,
+                "Cm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=nCzwGVKpjpo"
+        },
+        "Ariana Grande & Justin Bieber  Stuck with UpE49WK": {
+            "total_count": 61,
+            "chord_count": {
+                "Abmaj7": 1,
+                "Cm7": 12,
+                "C#": 5,
+                "Eb": 6,
+                "Ab": 13,
+                "C#6": 11,
+                "Cm": 4,
+                "Bbm": 1,
+                "Ab6": 2,
+                "C#maj7": 1,
+                "Fm7": 5
+            },
+            "url": "https://www.youtube.com/watch?v=oNjU"
+        }
+    }
+}

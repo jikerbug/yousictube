@@ -9,6 +9,7 @@ class MusicPost(models.Model):
     subject = models.CharField(max_length=200)
     url = models.URLField()
     create_date = models.DateTimeField()
+    isAdded = models.BooleanField(default=False)
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_music')
     modify_date = models.DateTimeField(null=True, blank=True)
