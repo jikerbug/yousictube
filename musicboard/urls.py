@@ -19,11 +19,14 @@ urlpatterns = [
     path('vote/music/<int:music_id>/', views.vote_music, name='vote_music'),
 
     #-------------------------------------[edited]--------------------------------------------#
-    path('music/download_sheet/<int:music_id>/', views.music_download_sheet, name='music_download_sheet'),
+    path('music/download_sheet_LSTM/<int:music_id>/', views.music_download_sheet_LSTM, name='music_download_sheet_LSTM'),
+    path('music/download_sheet_quick/<int:music_id>/', views.music_download_sheet_quick, name='music_download_sheet_quick'),
+
     path('music/recommend_music/<int:music_id>/', views.music_recommend_music, name='music_recommend_music'),
     path('music/update_recommend_music/<int:music_id>/', views.music_update_recommend_music, name='music_update_recommend_music'),
 
     path('music/sheet_loading/<int:music_id>/', views.music_sheet_loading, name='music_sheet_loading'),
+    path('music/sheet_loading_quick/<int:music_id>/', views.music_sheet_loading_quick, name='music_sheet_loading_quick'),
 
 
     #-------------------------------------[edited]--------------------------------------------#

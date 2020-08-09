@@ -14,16 +14,38 @@ import os.path
 import youtube_dl
 import json
 
-from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+import tensorflow.keras as keras #pip install tensorflow-cpu
 
-# pip install pillow
+from PIL import Image, ImageDraw, ImageFont # pip install pillow
 
-
+SAMPLES_TO_CONSIDER = 22050 # 이것이 일초
+MODEL_PATH = 'model_final_ver3.h5'
 JSON_PATH = 'data.json'
 
 
 class _Chord_Classification_Service:
+
+    model = None
     _instance = None
+    _mappings = []
+
+    def predict(self, bothchroma_list):
+
+        prediction_list =[]
+        for i in bothchroma_list:
+
+
+            chromagram = np.array(i["chromagram"])[np.newaxis, ...]
+
+            # input_shape = (1, 20, 24) (number of slices extract Chromagram, Chromagram)
+            preditioncs = self.model.predict(chromagram) #[  [0.1, 0.6, 0.1, ...]  ]
+            predicted_index = np.argmax(preditioncs)
+            predicted_keyword = self._mappings[predicted_index]
+            temp_dict = {"timestamp": i["timestamp"], "label": predicted_keyword}
+            prediction_list.append(temp_dict)
+        return prediction_list
+
 
     def add_recommend_database(self, url, json_path, working_directory_path):
 
@@ -80,11 +102,107 @@ class _Chord_Classification_Service:
 
 
 
+    def LSTM_load_audio_data_from_url(self, url):
 
+        # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
+        files = glob.glob("*.mp4")
+        for x in files:
+            if not os.path.isdir(x):
+                os.remove(x)
+        # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
+
+        # working directory : main folder
+        ydl_opts = {
+            'format': 'best',
+
+        }
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+
+        files = glob.glob("*.mp4")
+        audio_file_name = ''
+
+        signal, sr = 0, 0
+        for x in files:
+            if not os.path.isdir(x):
+                filename = os.path.splitext(x)
+                audio_file_name = filename[0]
+                signal, sr = librosa.load(x)
+                os.remove(x)
+
+        predicted_beat_list = vamp.collect(signal, sr, "beatroot-vamp:beatroot")
+        predicted_chord_list = vamp.collect(signal, sr, "nnls-chroma:chordino")
+
+        chord_list = []
+        for i in predicted_chord_list['list']:
+
+            if i['label'] != 'N':
+                i['timestamp'] = float(i['timestamp'])
+                chord_list.append(i)
+
+        beat_list = []
+        for i in predicted_beat_list['list']:
+            beat_list.append(float(i['timestamp']))
+
+        bothchroma_list = []
+        for idx in range(len(chord_list) - 1):
+
+            start = int(chord_list[idx]["timestamp"] * SAMPLES_TO_CONSIDER)
+            end = int(chord_list[idx + 1]["timestamp"] * SAMPLES_TO_CONSIDER)
+
+            # (20이상,24)을 (20,24)로 맞추는 작업
+            interval_signal = 0
+            interval_chroma_list = []
+
+            if(end - start >= 40960):
+                interval_signal = signal[start:start+40960]
+                interval_chroma_list = vamp.collect(interval_signal, sr, "nnls-chroma:nnls-chroma", output="bothchroma")
+                interval_chroma_list = list(interval_chroma_list['matrix'])[1].tolist()
+            else:
+                interval_signal = signal[start:end]
+                interval_chroma_list = vamp.collect(interval_signal, sr, "nnls-chroma:nnls-chroma", output="bothchroma")
+                interval_chroma_list = list(interval_chroma_list['matrix'])[1].tolist()
+                if (len(interval_chroma_list) < 20):
+                    while (len(interval_chroma_list) != 20):
+                        interval_chroma_list.append(interval_chroma_list[-1])
+
+            temp_dict = {"timestamp": chord_list[idx]["timestamp"], "chromagram": interval_chroma_list}
+
+            bothchroma_list.append(temp_dict)
+
+        # 마지막 코드(chord) 출력 위함
+
+        start = int(chord_list[-1]["timestamp"] * SAMPLES_TO_CONSIDER)
+        last_interval_signal = signal[start:]
+
+        interval_chroma_list = vamp.collect(last_interval_signal, sr, "nnls-chroma:nnls-chroma", output="bothchroma")
+        interval_chroma_list = list(interval_chroma_list['matrix'])[1].tolist()
+
+        if (len(interval_chroma_list) > 20):
+            interval_chroma_list = interval_chroma_list[:21]
+            if (len(interval_chroma_list) == 21):
+                interval_chroma_list.pop()  # 이상하게 21 나오는 경우가 있어서 끝값 삭제
+        elif (len(interval_chroma_list) < 20):
+            while (len(interval_chroma_list) != 20):
+                interval_chroma_list.append(interval_chroma_list[-1])
+
+        temp_dict = {"timestamp": chord_list[idx]["timestamp"], "chromagram": interval_chroma_list}
+        bothchroma_list.append(temp_dict)
+
+        LSTM_model_predicted_chord_list = self.predict(bothchroma_list)
+
+        return LSTM_model_predicted_chord_list, beat_list
 
 
     # 유튜브 url로부터 시간별 코드리스트, 비트리스트, 유튜브 추출 파일 이름을 반환하는 함수
     def load_audio_data_from_url(self, url, working_directory_path):
+
+        # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
+        files = glob.glob(working_directory_path + "/*.mp4")
+        for x in files:
+            if not os.path.isdir(x):
+                os.remove(x)
+        # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
 
         SAVE_PATH = '/'.join(os.getcwd().split('/')[:3]) + '/' + working_directory_path
         ydl_opts = {
@@ -124,9 +242,15 @@ class _Chord_Classification_Service:
         return chord_list, beat_list, audio_file_name.split('-')[0]
 
     # load_audio_data_from_url로부터 정보를 받아와 악보를 저장하는 함수
-    def make_music_sheet(self, url, title, working_directory_path):
+    def make_music_sheet(self, url, title, working_directory_path, isLSTM):
 
-        chord_list, beat_list, audio_file_name = self.load_audio_data_from_url(url, working_directory_path)
+        chord_list = []
+        beat_list = []
+        if(isLSTM):
+            chord_list, beat_list = self.LSTM_load_audio_data_from_url(url)
+        else:
+            chord_list, beat_list, audio_file_name = self.load_audio_data_from_url(url, working_directory_path)
+
         # print(chord_list)
         # print(beat_list)
         # print(len(beat_list))
@@ -137,21 +261,27 @@ class _Chord_Classification_Service:
         # print(len(beat_list))
         beat_list.append(beat_list[-1])
 
+
+
         text = ''
-        if title == '':
-            title = audio_file_name
+        longest_line_length = len(title) # 추후에 악보 이미지 파일 width를 정해주기 위함
 
         text += title
         text += '\n\n\n'
 
         total_chord_cnt = 0
         beat_flag = 0
+
+        add_line = ''
         for chord in chord_list:
             if chord['timestamp'] >= 0 and chord['timestamp'] < beat_list[0]:
                 if chord['label'] == 'N':
                     continue
-                text += chord['label'] + '  '
+                add_line += chord['label'] + '  '
                 total_chord_cnt += 1
+        text += add_line
+        if(len(add_line) > longest_line_length):
+            longest_line_length = len(add_line)
 
         init_flag = True
         for beat_id in range(len(beat_list)):
@@ -165,32 +295,51 @@ class _Chord_Classification_Service:
                     continue
                 init_flag = False
 
+            add_line = ''
             for chord in chord_list:
                 if chord['timestamp'] >= beat_list[beat_id - beat_flag] and chord['timestamp'] < beat_list[beat_id]:
-                    text += chord['label'] + '  '
+                    add_line += chord['label'] + '  '
                     total_chord_cnt += 1
+            text += add_line
+            if (len(add_line) > longest_line_length):
+                longest_line_length = len(add_line)
             text += '\n\n'
             beat_flag = 0
 
+        add_line = ''
         for chord in chord_list:
             if chord['timestamp'] >= 0 and chord['timestamp'] < beat_list[0]:
                 if chord['label'] == 'N':
                     continue
-                text += chord['label'] + '  '
+                add_line += chord['label'] + '  '
                 total_chord_cnt += 1
+        text += add_line
+        if (len(add_line) > longest_line_length):
+            longest_line_length = len(add_line)
 
         sheet_height = len(text.split('\n\n'))
-        sheet_width = int(250 * total_chord_cnt / sheet_height)
-        # ./ batang.ttc
-        print(sheet_height * 90 / sheet_width)
-        if sheet_height * 90 / sheet_width > 6:
-            sheet_width += int(sheet_height * 90 / sheet_width) * 23
+        sheet_width = longest_line_length * 35
+
+        # 한글 제목이 너무 긴경우 이미지 파일 크기가 안맞기 때문에 다른 기준으로 조정
+        sheet_width_alt = int(250 * total_chord_cnt / sheet_height)
+        if sheet_height * 90 / sheet_width_alt > 6:
+            sheet_width_alt += int(sheet_height * 90 / sheet_width_alt) * 23
+        if(sheet_width_alt > sheet_width):
+            sheet_width = sheet_width_alt
+        # --------------------------------------------------------------
+
+
         font = ImageFont.truetype('C:/Windows/Fonts/batang.ttc', 45)
         img = Image.new(mode='RGB', size=(sheet_width, sheet_height * 90), color='#FFF')
         draw = ImageDraw.Draw(img)
         draw.text((50, 50), text, font=font, fill='#000')
 
-        music_sheet_path = 'music_sheet_img/' + title + '.png'
+        music_sheet_path = 'music_sheet_img/' + title
+
+        if(not isLSTM):
+            music_sheet_path += '_quick'
+
+        music_sheet_path += '.png'
 
         img.save(music_sheet_path, format='PNG')
 
@@ -331,6 +480,33 @@ def Chord_Classification_Service():
     # ensure that we only have 1 instance of CCS
     if _Chord_Classification_Service._instance is None:
         _Chord_Classification_Service._instance = _Chord_Classification_Service()
+        _Chord_Classification_Service.model = keras.models.load_model(MODEL_PATH)
+        type1 = ''
+        type2 = 'm'
+        type3 = 'b'
+        type4 = 'bm'
+        type5 = '#'
+        type6 = '#m'
+        type7 = 'maj7'
+        type8 = 'm7'
+        type9 = 'bmaj7'
+        type10 = 'bm7'
+        type11 = '#maj7'
+        type12 = '#m7'
+        type13 = '7'
+        type14 = 'b7'
+        type15 = '#7'
+        type_table = [type1, type2, type3, type4, type5, type6, type7, type8, type9, type10, type11, type12, type13,
+                      type14, type15]
+
+        root_chord_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+
+        for chord_num, root_chord in enumerate(root_chord_list):
+            for type_num, type in enumerate(type_table):
+                _Chord_Classification_Service._mappings.append(root_chord + type)
+
+        # _Chord_Classification_Service._mappings.append("N")
+
     return _Chord_Classification_Service._instance
 
 if "__name__" == "__main__" :

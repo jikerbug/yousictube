@@ -1,80 +1,74 @@
 {
     "double_chord": {
-        "": {
-            "total_count": 69,
+        "Jamie Miller  City That Never Sleeps (Official Music Video)": {
+            "total_count": 14,
             "chord_count": {
-                "Emaj7-Bmaj7": 20,
-                "Bmaj7-Emaj7": 18,
-                "Bmaj7-E6": 4,
-                "E6-Emaj7": 4,
-                "Emaj7-B": 4,
-                "B-E6": 1,
-                "B-Emaj7": 5,
-                "Emaj7-E6": 3,
-                "E6-B": 1,
-                "E6-Bmaj7": 3,
-                "Emaj7-F#7": 1,
-                "F#7-B": 1,
-                "Bmaj7-E": 1,
+                "B-E6": 4,
+                "B-Emaj7": 3,
+                "Emaj7-B": 1,
                 "E-Bmaj7": 1,
-                "Bmaj7-F#": 1,
-                "F#-Bm": 1
+                "Bmaj7-E6": 1,
+                "E6-Bmaj7": 2,
+                "Bmaj7-E": 2
             },
-            "url": "https://www.youtube.com/watch?v=HDEng7Ln_sE"
+            "url": "https://www.youtube.com/watch?v=eWpI5yFglLg"
         },
-        "Full Stop (\ub9c8\uce68\ud45c)g": {
-            "total_count": 3,
+        "MASN  Hate Me! (Official Video)": {
+            "total_count": 11,
             "chord_count": {
-                "Emaj7-F#7": 1,
-                "F#7-B": 2
+                "Bmaj7-F#": 11
             },
-            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+            "url": "https://www.youtube.com/watch?v=qF1LWTHOdg0"
         },
-        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
-            "total_count": 3,
+        "Maroon 5  Memories (Official Video)": {
+            "total_count": 10,
             "chord_count": {
-                "F#-Bm": 3
+                "B-E6": 2,
+                "F#7-B": 1,
+                "E6-B": 4,
+                "B-Emaj7": 2,
+                "Emaj7-B": 1
             },
-            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
+            "url": "https://www.youtube.com/watch?v=SlPhMPnQ58k"
         }
     },
     "single_chord": {
-        "": {
-            "total_count": 70,
+        "Maroon 5  Memories (Official Video)": {
+            "total_count": 75,
             "chord_count": {
-                "Emaj7": 28,
-                "Bmaj7": 24,
-                "E6": 8,
-                "B": 6,
-                "F#7": 1,
-                "E": 1,
-                "F#": 1,
-                "Bm": 1
+                "B": 28,
+                "F#": 20,
+                "E": 11,
+                "E6": 7,
+                "F#7": 4,
+                "Emaj7": 5
             },
-            "url": "https://www.youtube.com/watch?v=HDEng7Ln_sE"
+            "url": "https://www.youtube.com/watch?v=SlPhMPnQ58k"
         },
-        "Full Stop (\ub9c8\uce68\ud45c)g": {
-            "total_count": 33,
+        "DaBaby \u2013 ROCKSTAR FT RODDY RICCH [Audio]": {
+            "total_count": 42,
             "chord_count": {
-                "B": 8,
-                "E6": 2,
-                "Emaj7": 6,
-                "F#7": 6,
-                "E": 7,
+                "B": 11,
+                "F#": 9,
+                "E": 3,
                 "Bmaj7": 2,
-                "Bm": 1,
-                "F#": 1
+                "F#7": 7,
+                "Emaj7": 5,
+                "E6": 5
             },
-            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+            "url": "https://www.youtube.com/watch?v=83xBPCw5hh4"
         },
-        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
-            "total_count": 24,
+        "Jamie Miller  City That Never Sleeps (Official Music Video)": {
+            "total_count": 38,
             "chord_count": {
-                "F#": 4,
-                "Bm": 14,
-                "F#7": 6
+                "B": 12,
+                "E": 7,
+                "E6": 7,
+                "Emaj7": 7,
+                "Bmaj7": 3,
+                "F#": 2
             },
-            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
+            "url": "https://www.youtube.com/watch?v=eWpI5yFglLg"
         }
     }
 }

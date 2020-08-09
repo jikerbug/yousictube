@@ -39,6 +39,7 @@
                     <!------------------------------------------------------------[edited]------------------------------------------------------------------->
                     <div class="text-center" >
                         <a href="{% url 'musicboard:music_sheet_loading' music.id %}" class="btn btn-sm btn-outline-secondary">Download Sheet</a>
+                        <a href="{% url 'musicboard:music_sheet_loading_quick' music.id %}" class="btn btn-sm btn-outline-secondary">Quick Download Sheet</a>
                         <a href="{% url 'musicboard:music_recommend_music' music.id %}" class="btn btn-sm btn-outline-secondary" onclick="show_loading()">Recommend Music</a>
                         <a href="{% url 'musicboard:music_update_recommend_music' music.id %}" class="btn btn-sm btn-outline-secondary" onclick="show_loading()">Update Recommend</a>
                         <div id="loading" style="display:none;">

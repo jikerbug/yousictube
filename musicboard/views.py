@@ -206,7 +206,32 @@ def vote_music(request, music_id):
     return redirect('musicboard:detail', music_id=music.id)
 
 #-------------------------------------[edited]--------------------------------------------#
-def music_download_sheet(request, music_id):
+def music_download_sheet_quick(request, music_id):
+
+    music = get_object_or_404(MusicPost, pk=music_id)
+    ccs = Chord_Classification_Service()
+
+    music_sheet_path =''
+    music_sheet_name =''
+    if(not os.path.isfile('music_sheet_img/' + music.subject + "_quick.png")):
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, 'audio_download/make_sheet', isLSTM=False)
+        music_sheet_name = music.subject + "_quick.png"
+    else:
+        music_sheet_path = 'music_sheet_img/' + music.subject + "_quick.png"
+        music_sheet_name = music.subject + "_quick.png"
+
+
+    file_name = urllib.parse.quote(music_sheet_name.encode('utf-8'))
+
+
+
+    if os.path.exists(music_sheet_path):
+        with open(music_sheet_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type=mimetypes.guess_type(music_sheet_path)[0])
+            response['Content-Disposition'] = 'attachment;filename*=UTF-8\'\'%s' % file_name
+            return response
+
+def music_download_sheet_LSTM(request, music_id):
 
     music = get_object_or_404(MusicPost, pk=music_id)
     ccs = Chord_Classification_Service()
@@ -214,7 +239,7 @@ def music_download_sheet(request, music_id):
     music_sheet_path =''
     music_sheet_name =''
     if(not os.path.isfile('music_sheet_img/' + music.subject + ".png")):
-        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, 'audio_download/make_sheet')
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, 'audio_download/make_sheet', isLSTM=True)
         music_sheet_name = music.subject + ".png"
     else:
         music_sheet_path = 'music_sheet_img/' + music.subject + ".png"
@@ -275,7 +300,6 @@ def music_recommend_music(request, music_id):
 
 
 def music_update_recommend_music(request, music_id):
-    print('test')
     music = get_object_or_404(MusicPost, pk=music_id)
     ccs = Chord_Classification_Service()
 
@@ -301,6 +325,22 @@ def music_update_recommend_music(request, music_id):
 
 
 
+
+def music_sheet_loading_quick(request, music_id):
+    """
+    musicboard 내용 출력
+    """
+    music = get_object_or_404(MusicPost, pk=music_id)
+
+
+    # iframe용 URL로 변경
+    realUrl = str(music.url)
+    iframeUrl = realUrl.replace("watch?v=", "embed/")
+    if realUrl == iframeUrl:
+        iframeUrl = realUrl.replace("youtu.be/", "www.youtube.com/embed/")
+
+    context = {'music': music, 'iframeUrl': iframeUrl}
+    return render(request, 'musicboard/music_sheet_loading_quick.html', context)
 
 def music_sheet_loading(request, music_id):
     """

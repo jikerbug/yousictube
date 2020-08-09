@@ -1,5 +1,27 @@
 {
     "double_chord": {
+        "BRIDGE  'WHO' (OFFICIAL AUDIO)": {
+            "total_count": 15,
+            "chord_count": {
+                "A6-Em7": 2,
+                "F#7-Em7": 1,
+                "Em7-A": 5,
+                "Em7-A7": 2,
+                "Bm-Em": 1,
+                "Bm-A": 4
+            },
+            "url": "https://www.youtube.com/watch?v=2hqjTA2Ujw8"
+        },
+        "Dua Lipa  Don't Start Now (Official Music Video)": {
+            "total_count": 12,
+            "chord_count": {
+                "D-Em7": 5,
+                "Em7-A6": 1,
+                "D-G6": 5,
+                "Bm-D": 1
+            },
+            "url": "https://www.youtube.com/watch?v=oygrmJFKYZY"
+        },
         "Dear Name (\uc774\ub984\uc5d0\uac8c)": {
             "total_count": 11,
             "chord_count": {
@@ -12,73 +34,56 @@
                 "Em7-A7": 1
             },
             "url": "https://www.youtube.com/watch?v=JSOBF_WhqEM"
-        },
-        "dlwlrma (\uc774 \uc9c0\uae08)": {
-            "total_count": 1,
-            "chord_count": {
-                "C#m-F#7": 1
-            },
-            "url": "https://www.youtube.com/watch?v=8ykMyNHAdKk"
-        },
-        "Black Out": {
-            "total_count": 0,
-            "chord_count": {},
-            "url": "https://www.youtube.com/watch?v=77rsl3WZaBI"
         }
     },
     "single_chord": {
-        "Dear Name (\uc774\ub984\uc5d0\uac8c)": {
-            "total_count": 64,
+        "Jonas Brothers  X ft. KAROL G": {
+            "total_count": 74,
             "chord_count": {
-                "A": 2,
-                "D": 8,
-                "Bm7": 6,
-                "F#m7": 4,
-                "G": 4,
-                "Em7": 10,
-                "D/F#": 9,
-                "G6": 4,
-                "G/A": 5,
-                "A7": 4,
-                "F#m": 1,
-                "D7": 2,
-                "Em": 2,
-                "Bm": 1,
-                "Gmaj7": 2
-            },
-            "url": "https://www.youtube.com/watch?v=JSOBF_WhqEM"
-        },
-        "Can't Love You Anymore (\uc0ac\ub791\uc774 \uc798) (With OHHYUK) (\uc624\ud601)": {
-            "total_count": 32,
-            "chord_count": {
-                "G6": 5,
-                "Em7": 6,
-                "B7": 4,
-                "C#m7b5": 3,
-                "Am7": 4,
-                "Bm7": 3,
-                "A7": 2,
-                "Gmaj7": 1,
-                "G/A": 1,
-                "E7": 2,
+                "D": 13,
+                "Em": 28,
+                "Am7": 12,
+                "D6": 7,
+                "Am6": 6,
+                "Em7": 2,
+                "G/A": 3,
+                "Bm7": 2,
                 "Bm": 1
             },
-            "url": "https://www.youtube.com/watch?v=0ldJaGupC1o"
+            "url": "https://www.youtube.com/watch?v=9hGdmEwBwbg"
         },
-        "Jam Jam (\uc7bc\uc7bc)": {
-            "total_count": 31,
+        "Camila Cabello  Shameless": {
+            "total_count": 72,
             "chord_count": {
-                "Em": 3,
-                "Am7": 14,
-                "Em7": 6,
-                "A": 1,
-                "D": 1,
-                "D7": 1,
-                "G6": 3,
-                "C/D": 1,
-                "D6": 1
+                "D": 3,
+                "G": 7,
+                "Em": 22,
+                "A": 2,
+                "Am6": 7,
+                "G6": 9,
+                "D7": 8,
+                "A6": 9,
+                "D6": 2,
+                "A7": 1,
+                "Am7": 2
             },
-            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+            "url": "https://www.youtube.com/watch?v=Fp_P_e1cPOE"
+        },
+        "Charli XCX  Enemy (Vertical Video)": {
+            "total_count": 70,
+            "chord_count": {
+                "D": 26,
+                "Em7": 10,
+                "Bm": 6,
+                "E7": 9,
+                "G": 5,
+                "Bm7": 5,
+                "D6": 4,
+                "Gmaj7": 1,
+                "F#7": 1,
+                "D7": 3
+            },
+            "url": "https://www.youtube.com/watch?v=iQKiFbDKLlE"
         }
     }
 }
