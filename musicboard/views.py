@@ -214,7 +214,7 @@ def music_download_sheet_quick(request, music_id):
     music_sheet_path =''
     music_sheet_name =''
     if(not os.path.isfile('music_sheet_img/' + music.subject + "_quick.png")):
-        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, 'audio_download/make_sheet', isLSTM=False)
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, isLSTM=False)
         music_sheet_name = music.subject + "_quick.png"
     else:
         music_sheet_path = 'music_sheet_img/' + music.subject + "_quick.png"
@@ -239,13 +239,12 @@ def music_download_sheet_LSTM(request, music_id):
     music_sheet_path =''
     music_sheet_name =''
     if(not os.path.isfile('music_sheet_img/' + music.subject + ".png")):
-        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, 'audio_download/make_sheet', isLSTM=True)
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, isLSTM=True)
         music_sheet_name = music.subject + ".png"
     else:
         music_sheet_path = 'music_sheet_img/' + music.subject + ".png"
         music_sheet_name = music.subject + ".png"
 
-    print(21231)
 
     file_name = urllib.parse.quote(music_sheet_name.encode('utf-8'))
 
@@ -267,8 +266,8 @@ def music_recommend_music(request, music_id):
     double_chord_recommend_dict = {}
     single_chord_recommend_dict = {}
     if (not os.path.isfile(info_path)):
-        double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url, music.subject, JSON_PATH,
-                                                                                                         'audio_download/recommend_music')
+        double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url, music.subject, JSON_PATH)
+
     else:
         with open(info_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -276,7 +275,7 @@ def music_recommend_music(request, music_id):
             single_chord_recommend_dict = data['single_chord']
 
     ranking_flag = 0
-    for idx, value in enumerate( double_chord_recommend_dict.values()):
+    for idx, value in enumerate(double_chord_recommend_dict.values()):
         value['iframe_url'] = value['url'].replace("watch?v=", "embed/")
         if idx == 0:
             value['ranking'] = '1st'
@@ -305,19 +304,31 @@ def music_update_recommend_music(request, music_id):
 
     double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url,
                                                                                                          music.subject,
-                                                                                                         JSON_PATH,
-                                                                                                     'audio_download/update_recommend_music')
+                                                                                                         JSON_PATH)
 
     if(not music.isAdded):
-        ccs.add_recommend_database(music.url, JSON_PATH, 'audio_download/update_recommend_music')
+        ccs.add_recommend_database(music.url, JSON_PATH)
         music.isAdded = True
         music.save()
 
-    for value in double_chord_recommend_dict.values():
+    ranking_flag = 0
+    for idx, value in enumerate(double_chord_recommend_dict.values()):
         value['iframe_url'] = value['url'].replace("watch?v=", "embed/")
+        if idx == 0:
+            value['ranking'] = '1st'
+        elif idx == 1:
+            value['ranking'] = '2nd'
+        else:
+            value['ranking'] = '3rd'
 
-    for value in single_chord_recommend_dict.values():
+    for idx, value in enumerate(single_chord_recommend_dict.values()):
         value['iframe_url'] = value['url'].replace("watch?v=", "embed/")
+        if idx == 0:
+            value['ranking'] = '1st'
+        elif idx == 1:
+            value['ranking'] = '2nd'
+        else:
+            value['ranking'] = '3rd'
 
     context = {'music': music, 'double_chord_recommend_dict': double_chord_recommend_dict,
                'single_chord_recommend_dict': single_chord_recommend_dict}

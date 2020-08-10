@@ -1,0 +1,67 @@
+{
+    "double_chord": {
+        "Usher  I Cry (Official Video)": {
+            "total_count": 7,
+            "chord_count": {
+                "C#6-Ab": 5,
+                "C#-Ab": 2
+            },
+            "url": "https://www.youtube.com/watch?v=ulqyG0DbAGA"
+        },
+        "Anuel AA , Bad Bunny  Hasta Que Dios Diga ( Video Oficial )": {
+            "total_count": 5,
+            "chord_count": {
+                "C#6-Ab": 2,
+                "C#maj7-Ab": 2,
+                "Fm-C#6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=nCzwGVKpjpo"
+        },
+        "Charlie Puth  Girlfriend [Official Video]": {
+            "total_count": 5,
+            "chord_count": {
+                "C#maj7-Ab": 1,
+                "C#6-Ab": 3,
+                "Fm-C#6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=asYfhMHAgqs"
+        }
+    },
+    "single_chord": {
+        "Anuel AA , Bad Bunny  Hasta Que Dios Diga ( Video Oficial )": {
+            "total_count": 52,
+            "chord_count": {
+                "C#6": 18,
+                "Fm": 13,
+                "C#maj7": 7,
+                "C#": 1,
+                "Eb6": 7,
+                "Ab": 5,
+                "Cm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=nCzwGVKpjpo"
+        },
+        "Faouzia  How It All Works Out (Stripped)": {
+            "total_count": 46,
+            "chord_count": {
+                "Fm": 8,
+                "Ab": 8,
+                "C#": 19,
+                "C#6": 2,
+                "Cm": 7,
+                "C#maj7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=mzri5P4obaw"
+        },
+        "SAINt JHN  Roses (Imanbek Remix) (Official Music Video)": {
+            "total_count": 41,
+            "chord_count": {
+                "Ab": 26,
+                "Abmaj7": 4,
+                "Fm": 8,
+                "Cm7": 3
+            },
+            "url": "https://www.youtube.com/watch?v=2zToEPpFEN8"
+        }
+    }
+}

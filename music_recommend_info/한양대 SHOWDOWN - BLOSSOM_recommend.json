@@ -1,0 +1,73 @@
+{
+    "double_chord": {
+        "Billie Eilish  everything i wanted": {
+            "total_count": 18,
+            "chord_count": {
+                "C#m-Dmaj7": 16,
+                "Dmaj7-C#m": 1,
+                "E6-Dmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=EgBJmlPo8Xw"
+        },
+        "Lady Gaga, Ariana Grande  Rain On Me (Official Music Video)": {
+            "total_count": 16,
+            "chord_count": {
+                "Amaj7-C#m7": 13,
+                "F#m-C#m": 1,
+                "C#m-Amaj7": 1,
+                "A6-C#m7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=AoAm4om0wTs"
+        },
+        "Hero The Band  Are You Happy Now (Official Music Video)": {
+            "total_count": 12,
+            "chord_count": {
+                "A-Bm7": 11,
+                "A-Dmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
+        }
+    },
+    "single_chord": {
+        "Hero The Band  Are You Happy Now (Official Music Video)": {
+            "total_count": 62,
+            "chord_count": {
+                "Bm7": 25,
+                "A": 23,
+                "A6": 6,
+                "E6": 2,
+                "Amaj7": 1,
+                "Dmaj7": 1,
+                "F#m": 1,
+                "F#m7": 1,
+                "Bm6": 2
+            },
+            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
+        },
+        "YFN Lucci  Wet (She Got That...) (Official Video)": {
+            "total_count": 58,
+            "chord_count": {
+                "F#m7": 10,
+                "Abm7": 17,
+                "Amaj7": 18,
+                "B6": 2,
+                "A6": 5,
+                "Abm": 4,
+                "C#m": 2
+            },
+            "url": "https://www.youtube.com/watch?v=m8jZunevga8"
+        },
+        "Billie Eilish  everything i wanted": {
+            "total_count": 51,
+            "chord_count": {
+                "Dmaj7": 22,
+                "C#m": 22,
+                "D6": 1,
+                "C#7": 1,
+                "F#m": 2,
+                "E6": 3
+            },
+            "url": "https://www.youtube.com/watch?v=EgBJmlPo8Xw"
+        }
+    }
+}

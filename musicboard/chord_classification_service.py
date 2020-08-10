@@ -39,33 +39,38 @@ class _Chord_Classification_Service:
             chromagram = np.array(i["chromagram"])[np.newaxis, ...]
 
             # input_shape = (1, 20, 24) (number of slices extract Chromagram, Chromagram)
-            preditioncs = self.model.predict(chromagram) #[  [0.1, 0.6, 0.1, ...]  ]
-            predicted_index = np.argmax(preditioncs)
+            preditions = self.model.predict(chromagram) #[  [0.1, 0.6, 0.1, ...]  ]
+            predicted_index = np.argmax(preditions)
             predicted_keyword = self._mappings[predicted_index]
             temp_dict = {"timestamp": i["timestamp"], "label": predicted_keyword}
             prediction_list.append(temp_dict)
         return prediction_list
 
 
-    def add_recommend_database(self, url, json_path, working_directory_path):
+    def add_recommend_database(self, url, json_path):
 
-        SAVE_PATH = '/'.join(os.getcwd().split('/')[:3]) + '/' + working_directory_path
+        # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
+        files = glob.glob("*.mp4")
+        for x in files:
+            if not os.path.isdir(x):
+                os.remove(x)
+        # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
+
         ydl_opts = {
             'format': 'best',
-            'outtmpl': SAVE_PATH + '/%(title)s.%(ext)s',
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
         # 확장자 변경
-        files = glob.glob(working_directory_path + "/*.mp4")
+        files = glob.glob("*.mp4")
         audio_file_name = ''
 
         signal, sr = 0, 0
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = str(filename[0].split(working_directory_path + '\\')[1])
+                audio_file_name = filename[0]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
@@ -86,10 +91,9 @@ class _Chord_Classification_Service:
 
         double_chord_list_with_url.append(double_chord_list_with_url[-1].split('-')[-1] + '-' + url)
 
-        # dict_key_music_name = ''
-        # for idx in range(len(audio_file_name.split('-')) - 1):
-        #     dict_key_music_name += audio_file_name.split('-')[idx]
-        dict_key_music_name = audio_file_name
+        dict_key_music_name = ''
+        for idx in range(len(audio_file_name.split('-')) - 1):
+            dict_key_music_name += audio_file_name.split('-')[idx]
 
         with open(json_path, 'r', encoding='utf-8') as f:
             chord_list_dict = json.load(f)
@@ -131,6 +135,11 @@ class _Chord_Classification_Service:
                 os.remove(x)
 
         predicted_beat_list = vamp.collect(signal, sr, "beatroot-vamp:beatroot")
+        isEmptyBeatList = False
+        if(predicted_beat_list['list'] == []):
+            isEmptyBeatList = True
+
+
         predicted_chord_list = vamp.collect(signal, sr, "nnls-chroma:chordino")
 
         chord_list = []
@@ -191,42 +200,43 @@ class _Chord_Classification_Service:
 
         LSTM_model_predicted_chord_list = self.predict(bothchroma_list)
 
-        return LSTM_model_predicted_chord_list, beat_list
+        return LSTM_model_predicted_chord_list, beat_list, isEmptyBeatList
 
 
     # 유튜브 url로부터 시간별 코드리스트, 비트리스트, 유튜브 추출 파일 이름을 반환하는 함수
-    def load_audio_data_from_url(self, url, working_directory_path):
+    def load_audio_data_from_url(self, url):
 
         # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
-        files = glob.glob(working_directory_path + "/*.mp4")
+        files = glob.glob("*.mp4")
         for x in files:
             if not os.path.isdir(x):
                 os.remove(x)
         # ----- 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 경우에 파일을 제거 ------ #
 
-        SAVE_PATH = '/'.join(os.getcwd().split('/')[:3]) + '/' + working_directory_path
         ydl_opts = {
             'format': 'best',
-            'outtmpl': SAVE_PATH + '/%(title)s.%(ext)s',
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
         # 확장자 변경
-        files = glob.glob(working_directory_path + "/*.mp4")
+        files = glob.glob("*.mp4")
         audio_file_name = ''
 
         signal, sr = 0, 0
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = filename[0].split(working_directory_path + '\\')[1]
+                audio_file_name = filename[0]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
         # load audio file
 
         predicted_beat_list = vamp.collect(signal, sr, "beatroot-vamp:beatroot")
+        isEmptyBeatList = False
+        if (predicted_beat_list['list'] == []):
+            isEmptyBeatList = True
 
         predicted_chord_list = vamp.collect(signal, sr, "nnls-chroma:chordino")
 
@@ -239,94 +249,139 @@ class _Chord_Classification_Service:
         for i in predicted_beat_list['list']:
             beat_list.append(float(i['timestamp']))
 
-        return chord_list, beat_list, audio_file_name.split('-')[0]
+        audio_file_name_new = ''
+        for idx in range(len(audio_file_name.split('-')) - 1):
+            audio_file_name_new += audio_file_name.split('-')[idx]
+
+        return chord_list, beat_list, audio_file_name_new, isEmptyBeatList
 
     # load_audio_data_from_url로부터 정보를 받아와 악보를 저장하는 함수
-    def make_music_sheet(self, url, title, working_directory_path, isLSTM):
+    def make_music_sheet(self, url, title, isLSTM):
 
         chord_list = []
         beat_list = []
+        isEmptyBeatList = False
+
         if(isLSTM):
-            chord_list, beat_list = self.LSTM_load_audio_data_from_url(url)
+            chord_list, beat_list, isEmptyBeatList = self.LSTM_load_audio_data_from_url(url)
         else:
-            chord_list, beat_list, audio_file_name = self.load_audio_data_from_url(url, working_directory_path)
-
-        # print(chord_list)
-        # print(beat_list)
-        # print(len(beat_list))
-
-        # for문을 돌다가 마지막 element에 도달하기 전에 끊기지 않게 하기 위함
-        while ((len(beat_list) + 6) % 16 != 0):
-            beat_list.append(beat_list[-1])
-        # print(len(beat_list))
-        beat_list.append(beat_list[-1])
+            chord_list, beat_list, audio_file_name, isEmptyBeatList = self.load_audio_data_from_url(url)
 
 
 
         text = ''
-        longest_line_length = len(title) # 추후에 악보 이미지 파일 width를 정해주기 위함
+        sheet_width = 0
+        sheet_height = 0
+        if(not isEmptyBeatList):
+            # for문을 돌다가 마지막 element에 도달하기 전에 끊기지 않게 하기 위함
+            while ((len(beat_list) + 6) % 16 != 0):
+                beat_list.append(beat_list[-1])
+            beat_list.append(beat_list[-1])
 
-        text += title
-        text += '\n\n\n'
+            longest_line_length = len(title) # 추후에 악보 이미지 파일 width를 정해주기 위함
 
-        total_chord_cnt = 0
-        beat_flag = 0
+            text += title
+            text += '\n\n\n'
 
-        add_line = ''
-        for chord in chord_list:
-            if chord['timestamp'] >= 0 and chord['timestamp'] < beat_list[0]:
-                if chord['label'] == 'N':
-                    continue
-                add_line += chord['label'] + '  '
-                total_chord_cnt += 1
-        text += add_line
-        if(len(add_line) > longest_line_length):
-            longest_line_length = len(add_line)
-
-        init_flag = True
-        for beat_id in range(len(beat_list)):
-            if init_flag == False:
-                if beat_flag != 16:
-                    beat_flag += 1
-                    continue
-            else:
-                if beat_flag != 10:
-                    beat_flag += 1
-                    continue
-                init_flag = False
+            total_chord_cnt = 0
+            beat_flag = 0
 
             add_line = ''
             for chord in chord_list:
-                if chord['timestamp'] >= beat_list[beat_id - beat_flag] and chord['timestamp'] < beat_list[beat_id]:
+                if chord['timestamp'] >= 0 and chord['timestamp'] < beat_list[0]:
+                    if chord['label'] == 'N':
+                        continue
+                    add_line += chord['label'] + '  '
+                    total_chord_cnt += 1
+            text += add_line
+            if(len(add_line) > longest_line_length):
+                longest_line_length = len(add_line)
+
+            init_flag = True
+            for beat_id in range(len(beat_list)):
+                if init_flag == False:
+                    if beat_flag != 16:
+                        beat_flag += 1
+                        continue
+                else:
+                    if beat_flag != 10:
+                        beat_flag += 1
+                        continue
+                    init_flag = False
+
+                add_line = ''
+                for chord in chord_list:
+                    if chord['timestamp'] >= beat_list[beat_id - beat_flag] and chord['timestamp'] < beat_list[beat_id]:
+                        add_line += chord['label'] + '  '
+                        total_chord_cnt += 1
+                text += add_line
+                if (len(add_line) > longest_line_length):
+                    longest_line_length = len(add_line)
+                text += '\n\n'
+                beat_flag = 0
+
+            add_line = ''
+            for chord in chord_list:
+                if chord['timestamp'] >= 0 and chord['timestamp'] < beat_list[0]:
+                    if chord['label'] == 'N':
+                        continue
                     add_line += chord['label'] + '  '
                     total_chord_cnt += 1
             text += add_line
             if (len(add_line) > longest_line_length):
                 longest_line_length = len(add_line)
-            text += '\n\n'
+
+            sheet_height = len(text.split('\n\n'))
+            sheet_width = longest_line_length * 35
+
+            # 한글 제목이 너무 긴경우 이미지 파일 크기가 안맞기 때문에 다른 기준으로 조정
+            sheet_width_alt = int(250 * total_chord_cnt / sheet_height)
+            if sheet_height * 90 / sheet_width_alt > 6:
+                sheet_width_alt += int(sheet_height * 90 / sheet_width_alt) * 23
+            if(sheet_width_alt > sheet_width):
+                sheet_width = sheet_width_alt
+            # --------------------------------------------------------------
+        else:
+            longest_line_length = len(title)  # 추후에 악보 이미지 파일 width를 정해주기 위함
+
+            text += title
+            text += '\n\n\n'
+
+            total_chord_cnt = 0
             beat_flag = 0
 
-        add_line = ''
-        for chord in chord_list:
-            if chord['timestamp'] >= 0 and chord['timestamp'] < beat_list[0]:
-                if chord['label'] == 'N':
-                    continue
-                add_line += chord['label'] + '  '
-                total_chord_cnt += 1
-        text += add_line
-        if (len(add_line) > longest_line_length):
-            longest_line_length = len(add_line)
+            isFourCnt = 0
 
-        sheet_height = len(text.split('\n\n'))
-        sheet_width = longest_line_length * 35
 
-        # 한글 제목이 너무 긴경우 이미지 파일 크기가 안맞기 때문에 다른 기준으로 조정
-        sheet_width_alt = int(250 * total_chord_cnt / sheet_height)
-        if sheet_height * 90 / sheet_width_alt > 6:
-            sheet_width_alt += int(sheet_height * 90 / sheet_width_alt) * 23
-        if(sheet_width_alt > sheet_width):
-            sheet_width = sheet_width_alt
-        # --------------------------------------------------------------
+            for chord in chord_list:
+
+                isFourCnt += 1
+                if isFourCnt == 4:
+                    isFourCnt = 0
+                    text += '\n\n'
+                    text += chord['label'] + '  '
+                else:
+                    text += chord['label'] + '  '
+
+            total_chord_cnt = len(chord_list)
+
+            text_list = text.split('\n\n')
+            for text_line in text_list:
+                if longest_line_length < len(text_line):
+                    longest_line_length = len(text_line)
+
+
+            sheet_height = len(text.split('\n\n'))
+            sheet_width = longest_line_length * 35
+
+            # 한글 제목이 너무 긴경우 이미지 파일 크기가 안맞기 때문에 다른 기준으로 조정
+            sheet_width_alt = int(250 * total_chord_cnt / sheet_height)
+            if sheet_height * 90 / sheet_width_alt > 6:
+                sheet_width_alt += int(sheet_height * 90 / sheet_width_alt) * 23
+            if (sheet_width_alt > sheet_width):
+                sheet_width = sheet_width_alt
+
+            # --------------------------------------------------------------
 
 
         font = ImageFont.truetype('C:/Windows/Fonts/batang.ttc', 45)
@@ -345,13 +400,16 @@ class _Chord_Classification_Service:
 
         return music_sheet_path
 
-    def get_top_three_similar_chord_music(self, url, music_subject, json_path, working_directory_path):
+
+
+
+    def get_top_three_similar_chord_music(self, url, music_subject, json_path):
 
         # 1. 연속코드 비교
 
         # 1. 중복없는, 코드 종류 리스트 저장 ***  이거로 기존의 chord_list를 대체
         # 2. 저장된 데이터에서 비교!
-        chord_list_with_timestamp, beat_list, audio_file_name = self.load_audio_data_from_url(url, working_directory_path)
+        chord_list_with_timestamp, beat_list, audio_file_name, isEmptyBeatList = self.load_audio_data_from_url(url)
         # print(chord_list_with_timestamp)
 
         double_chord_list = self.get_double_chord_list(chord_list_with_timestamp)
@@ -422,14 +480,6 @@ class _Chord_Classification_Service:
                             same_chord_cnt[single_chord] += 1
                         total_cnt += 1
 
-            # data.json의 마지막 더블 코드의 두번째 코드가 반영이 안되는 것을 보완! -> 마지막 데이터 저장형태를 chord-url로 바꿔서 생략
-            # for single_chord in single_chord_name_list:
-            #     if value[-1].split('-')[-1] == single_chord:
-            #         if single_chord not in same_chord_progression_cnt:
-            #             same_chord_progression_cnt[single_chord] = 1
-            #         else:
-            #             same_chord_progression_cnt[single_chord] += 1
-            #         total_cnt += 1
 
             music_url = value[-1].split('-')[-1]
 
@@ -445,12 +495,6 @@ class _Chord_Classification_Service:
             top_three_single_chord_info_dict[music[0].split('-url:')[0]] = {"total_count": music[1],
                                                           "chord_count": same_single_chord_cnt_dict[music[0]],
                                                           "url": music[0].split('-url:')[-1]}
-            # print(type(music))
-            # music = list(music).append(same_single_chord_cnt_dict[music[0]])
-            # music.append(music_url)
-            # print(f'total count of same single chord of {music[0]} is {music[1]}')
-            # print(same_single_chord_cnt_dict[music[0]])
-            # print(music)
 
         info_data = {'double_chord': top_three_double_chord_info_dict, 'single_chord': top_three_single_chord_info_dict}
         info_path = 'music_recommend_info/' + music_subject + '_recommend.json'
