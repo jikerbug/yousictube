@@ -1,0 +1,69 @@
+{
+    "double_chord": {
+        "Alec Benjamin  Oh My God (Tour Video)": {
+            "total_count": 15,
+            "chord_count": {
+                "Ab6-Eb": 9,
+                "Eb-Abmaj7": 3,
+                "Eb-Ab": 2,
+                "Abmaj7-Eb": 1
+            },
+            "url": "https://www.youtube.com/watch?v=BbmcEtFDnuA"
+        },
+        "SAINt JHN  Roses (Imanbek Remix) (Official Music Video)": {
+            "total_count": 13,
+            "chord_count": {
+                "Bb7-Ab": 12,
+                "Bb7-Ab6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=2zToEPpFEN8"
+        },
+        "Trevor Daniel, Selena Gomez  Past Life (Official Video)": {
+            "total_count": 13,
+            "chord_count": {
+                "Ab6-Eb": 11,
+                "Eb-Bb7": 1,
+                "Bb7-Ab6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=1AhOK4UwAMs"
+        }
+    },
+    "single_chord": {
+        "SAINt JHN  Roses (Imanbek Remix) (Official Music Video)": {
+            "total_count": 51,
+            "chord_count": {
+                "Ab": 26,
+                "Bb7": 19,
+                "Abmaj7": 4,
+                "Ab6": 1,
+                "Bbm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=2zToEPpFEN8"
+        },
+        "Camila Cabello  My Oh My (Official Music Video) ft. DaBaby": {
+            "total_count": 47,
+            "chord_count": {
+                "Abmaj7": 11,
+                "Ab": 10,
+                "Ebmaj7": 18,
+                "Eb6": 7,
+                "Ab6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=6fd2kkLmSDQ"
+        },
+        "Anuel AA , Bad Bunny  Hasta Que Dios Diga ( Video Oficial )": {
+            "total_count": 44,
+            "chord_count": {
+                "Eb": 19,
+                "Bbm": 7,
+                "Eb6": 7,
+                "Ab/Eb": 2,
+                "Ab": 5,
+                "Bb7": 2,
+                "Gm": 1,
+                "Ebmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=nCzwGVKpjpo"
+        }
+    }
+}

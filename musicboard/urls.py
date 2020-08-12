@@ -18,7 +18,7 @@ urlpatterns = [
 
     path('vote/music/<int:music_id>/', views.vote_music, name='vote_music'),
 
-    #-------------------------------------[edited]--------------------------------------------#
+    #------------------------------------- 악보저장 & 음악추천 --------------------------------------------#
     path('music/download_sheet_LSTM/<int:music_id>/', views.music_download_sheet_LSTM, name='music_download_sheet_LSTM'),
     path('music/download_sheet_quick/<int:music_id>/', views.music_download_sheet_quick, name='music_download_sheet_quick'),
 
@@ -27,7 +27,5 @@ urlpatterns = [
 
     path('music/sheet_loading/<int:music_id>/', views.music_sheet_loading, name='music_sheet_loading'),
     path('music/sheet_loading_quick/<int:music_id>/', views.music_sheet_loading_quick, name='music_sheet_loading_quick'),
-
-
-    #-------------------------------------[edited]--------------------------------------------#
+    #------------------------------------- 악보저장 & 음악추천 --------------------------------------------#
 ]

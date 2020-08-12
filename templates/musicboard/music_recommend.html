@@ -33,7 +33,6 @@
                             <P><!-- Not Allowed Attribute Filtered ( allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") --><iframe width="560" height="315" src="{{ music.iframe_url }}" frameborder="0" allowfullscreen=""></iframe></P>
                             <p>link: <a href="{{ music.url }}" target="_blank">{{ music.url }}</a></p>
                             <p><strong>Same Progression Count : {{ music.total_count }}</strong></p>
-<!--                            <p><strong>Same Progression info : {{ music.chord_count }}</strong></p>-->
                             <br><br>
                         {% endfor %}
                     </div>
@@ -43,7 +42,7 @@
 
         </div>
 
-        <h5><strong>Based on Chord Progression</strong></h5>
+        <h5><strong>Based on Single Chord</strong></h5>
         <div class="col-11"> <!-- 음악 영역 -->
 
             <div class="card">
@@ -52,6 +51,7 @@
                         {% for name, music in single_chord_recommend_dict.items %}
                             <p><h5>{{ music.ranking }}: {{ name }}</h5></p>
                             <P><!-- Not Allowed Attribute Filtered ( allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") --><iframe width="560" height="315" src="{{ music.iframe_url }}" frameborder="0" allowfullscreen=""></iframe></P>
+                            <p>link: <a href="{{ music.url }}" target="_blank">{{ music.url }}</a></p>
                             <p><strong>Same Chord Count : {{ music.total_count }}</strong></p>
                             <br><br>
                         {% endfor %}

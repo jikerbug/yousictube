@@ -8,20 +8,18 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q, Count
-#-------------------------------------[edited]--------------------------------------------#
+#-------------------------------------[악보저장 & 음악추천]--------------------------------------------#
 from .chord_classification_service import Chord_Classification_Service
 from django.http import HttpResponse, JsonResponse
 import os
 import urllib
 import mimetypes
-#-------------------------------------[edited]--------------------------------------------#
+#-------------------------------------[악보저장 & 음악추천]--------------------------------------------#
 
 
 from .models import MusicPost, Comment
 from .forms import MusicForm, CommentForm
 
-
-# Create your views here.
 
 JSON_PATH = 'data_big.json'
 def index(request):
@@ -205,8 +203,13 @@ def vote_music(request, music_id):
         music.voter.add(request.user)
     return redirect('musicboard:detail', music_id=music.id)
 
-#-------------------------------------[edited]--------------------------------------------#
-def music_download_sheet_quick(request, music_id):
+#-------------------------------------[악보저장 & 음악추천]--------------------------------------------#
+
+def music_download_sheet_quick(request, music_id): #
+    """
+    - vamp plugin을 통한 코드추출 및 악보저장
+    - quick이 붙은 이유는 tensorflow를 통한 악보저장보다 실행시간이 적기 때문 ( 약 15초 / 약 1분 )
+    """
 
     music = get_object_or_404(MusicPost, pk=music_id)
     ccs = Chord_Classification_Service()
@@ -221,17 +224,19 @@ def music_download_sheet_quick(request, music_id):
         music_sheet_name = music.subject + "_quick.png"
 
 
-    file_name = urllib.parse.quote(music_sheet_name.encode('utf-8'))
-
-
-
     if os.path.exists(music_sheet_path):
         with open(music_sheet_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type=mimetypes.guess_type(music_sheet_path)[0])
+
+            # 인코딩 문제 해결
+            file_name = urllib.parse.quote(music_sheet_name.encode('utf-8'))
             response['Content-Disposition'] = 'attachment;filename*=UTF-8\'\'%s' % file_name
             return response
 
 def music_download_sheet_LSTM(request, music_id):
+    """
+    tensorflow(LSTM 인공지능 모델)를 통한 코드추출 및 악보저장
+    """
 
     music = get_object_or_404(MusicPost, pk=music_id)
     ccs = Chord_Classification_Service()
@@ -246,18 +251,20 @@ def music_download_sheet_LSTM(request, music_id):
         music_sheet_name = music.subject + ".png"
 
 
-    file_name = urllib.parse.quote(music_sheet_name.encode('utf-8'))
-
-
-
     if os.path.exists(music_sheet_path):
         with open(music_sheet_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type=mimetypes.guess_type(music_sheet_path)[0])
+
+            # 인코딩 문제 해결
+            file_name = urllib.parse.quote(music_sheet_name.encode('utf-8'))
             response['Content-Disposition'] = 'attachment;filename*=UTF-8\'\'%s' % file_name
             return response
 
 
 def music_recommend_music(request, music_id):
+    """
+    vamp plugin 통해 추출한 코드 데이터 기반 음악 추천
+    """
 
     music = get_object_or_404(MusicPost, pk=music_id)
     ccs = Chord_Classification_Service()
@@ -299,13 +306,17 @@ def music_recommend_music(request, music_id):
 
 
 def music_update_recommend_music(request, music_id):
+    """
+    1. vamp plugin 통해 추출한 코드 데이터 기반 음악 추천
+    2. 추천리스트 갱신 및 추천 추천 기준 음악의 데이터를 추천음악 리스트 데이터에 추가
+    """
+    
     music = get_object_or_404(MusicPost, pk=music_id)
     ccs = Chord_Classification_Service()
 
     double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url,
                                                                                                          music.subject,
                                                                                                          JSON_PATH)
-
     if(not music.isAdded):
         ccs.add_recommend_database(music.url, JSON_PATH)
         music.isAdded = True
@@ -332,17 +343,16 @@ def music_update_recommend_music(request, music_id):
 
     context = {'music': music, 'double_chord_recommend_dict': double_chord_recommend_dict,
                'single_chord_recommend_dict': single_chord_recommend_dict}
+
     return render(request, 'musicboard/music_recommend.html', context)
-
-
 
 
 def music_sheet_loading_quick(request, music_id):
     """
-    musicboard 내용 출력
+    vamp plugin을 통한 코드추출 및 악보저장 로딩시 musicboard 내용 출력
     """
-    music = get_object_or_404(MusicPost, pk=music_id)
 
+    music = get_object_or_404(MusicPost, pk=music_id)
 
     # iframe용 URL로 변경
     realUrl = str(music.url)
@@ -355,10 +365,10 @@ def music_sheet_loading_quick(request, music_id):
 
 def music_sheet_loading(request, music_id):
     """
-    musicboard 내용 출력
+    tensorflow를 통한 코드추출 및 악보저장 로딩시 musicboard 내용 출력
     """
-    music = get_object_or_404(MusicPost, pk=music_id)
 
+    music = get_object_or_404(MusicPost, pk=music_id)
 
     # iframe용 URL로 변경
     realUrl = str(music.url)
@@ -370,6 +380,4 @@ def music_sheet_loading(request, music_id):
     return render(request, 'musicboard/music_sheet_loading.html', context)
 
 
-
-
-#-------------------------------------[edited]--------------------------------------------#
+#-------------------------------------[악보저장 & 음악추천]--------------------------------------------#

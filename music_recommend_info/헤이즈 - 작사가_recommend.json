@@ -1,0 +1,75 @@
+{
+    "double_chord": {
+        "Dear Name (\uc774\ub984\uc5d0\uac8c)": {
+            "total_count": 7,
+            "chord_count": {
+                "F#m7-Bm7": 1,
+                "Bm7-G": 2,
+                "Bm7-Em7": 2,
+                "G-F#m7": 1,
+                "Bm7-Gmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=JSOBF_WhqEM"
+        },
+        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
+            "total_count": 5,
+            "chord_count": {
+                "Bm-Em7": 2,
+                "G6-F#m7": 1,
+                "F#m7-Bm": 2
+            },
+            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
+        },
+        "Kane Brown, Swae Lee, Khalid  Be Like That (Lyric Video)": {
+            "total_count": 4,
+            "chord_count": {
+                "Gmaj7-F#m7": 3,
+                "F#m7-Bm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=QeW3iUbc6S0"
+        }
+    },
+    "single_chord": {
+        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
+            "total_count": 57,
+            "chord_count": {
+                "Bm": 14,
+                "Em7": 16,
+                "D/A": 3,
+                "F#m7": 5,
+                "F#7": 6,
+                "Bm7": 1,
+                "G6": 4,
+                "A7": 2,
+                "F#aug": 1,
+                "Gmaj7": 1,
+                "F#m": 3,
+                "G": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
+        },
+        "Taylor Swift  Lover": {
+            "total_count": 42,
+            "chord_count": {
+                "G": 18,
+                "Gmaj7": 15,
+                "Em7": 6,
+                "Bm7": 2,
+                "Bm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=BjZmE2gtdo"
+        },
+        "BRIDGE  'WHO' (OFFICIAL AUDIO)": {
+            "total_count": 40,
+            "chord_count": {
+                "Bm": 13,
+                "Em7": 18,
+                "Bm7": 2,
+                "A7": 4,
+                "F#7": 1,
+                "F#m": 2
+            },
+            "url": "https://www.youtube.com/watch?v=2hqjTA2Ujw8"
+        }
+    }
+}

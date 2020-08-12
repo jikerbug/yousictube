@@ -36,25 +36,20 @@
                         <P><!-- Not Allowed Attribute Filtered ( allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture") --><iframe width="560" height="315" src="{{ iframeUrl }}" frameborder="0" allowfullscreen=""></iframe></P>
                         <p>link: <a href="{{ music.url }}" target="_blank">{{ music.url }}</a></p>
                     </div>
-                    <!------------------------------------------------------------[edited]------------------------------------------------------------------->
+                    <!------------------------------------------------------------ 악보저장 & 음악추천 start ------------------------------------------------------------------->
                     <div class="text-center" >
                         <a href="{% url 'musicboard:music_sheet_loading' music.id %}" class="btn btn-sm btn-outline-secondary">Download Sheet</a>
                         <a href="{% url 'musicboard:music_sheet_loading_quick' music.id %}" class="btn btn-sm btn-outline-secondary">Quick Download Sheet</a>
                         <a href="{% url 'musicboard:music_recommend_music' music.id %}" class="btn btn-sm btn-outline-secondary" onclick="show_loading()">Recommend Music</a>
                         <a href="{% url 'musicboard:music_update_recommend_music' music.id %}" class="btn btn-sm btn-outline-secondary" onclick="show_loading()">Update Recommend</a>
                         <div id="loading" style="display:none;">
-                            <img id="loading-image" src="{% static '/image/sample.gif' %}" alt="Loading..." />
+                            <img id="loading-image" src="{% static '/image/loading_animation.gif' %}" alt="Loading..." />
                             <br>
-                            <img id="load" src="{% static '/image/30.gif' %}" alt="Loading..." />
+                            <img id="load" src="{% static '/image/loading_bar.gif' %}" alt="Loading..." />
                             <p><strong>Generating Recommend Music List...</strong></p>
                         </div>
-
-
                     </div>
-
-
-
-                    <!------------------------------------------------------------[edited]------------------------------------------------------------------->
+                    <!------------------------------------------------------------ 악보저장 & 음악추천 end ------------------------------------------------------------------->
 
                     <div class="d-flex justify-content-end">
                         {% if music.modify_date %}
