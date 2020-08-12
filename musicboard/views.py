@@ -217,7 +217,7 @@ def music_download_sheet_quick(request, music_id): #
     music_sheet_path =''
     music_sheet_name =''
     if(not os.path.isfile('music_sheet_img/' + music.subject + "_quick.png")):
-        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, isLSTM=False)
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, isLSTM=False, audio_path='audio_file_download/make_sheet_quick')
         music_sheet_name = music.subject + "_quick.png"
     else:
         music_sheet_path = 'music_sheet_img/' + music.subject + "_quick.png"
@@ -244,7 +244,7 @@ def music_download_sheet_LSTM(request, music_id):
     music_sheet_path =''
     music_sheet_name =''
     if(not os.path.isfile('music_sheet_img/' + music.subject + ".png")):
-        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, isLSTM=True)
+        music_sheet_path = ccs.make_music_sheet(music.url, music.subject, isLSTM=True, audio_path='audio_file_download/make_sheet_LSTM')
         music_sheet_name = music.subject + ".png"
     else:
         music_sheet_path = 'music_sheet_img/' + music.subject + ".png"
@@ -273,7 +273,8 @@ def music_recommend_music(request, music_id):
     double_chord_recommend_dict = {}
     single_chord_recommend_dict = {}
     if (not os.path.isfile(info_path)):
-        double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url, music.subject, JSON_PATH)
+        double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url, music.subject, JSON_PATH,
+                                                                                                         audio_path='audio_file_download/recommend_music')
 
     else:
         with open(info_path, 'r', encoding='utf-8') as f:
@@ -316,9 +317,10 @@ def music_update_recommend_music(request, music_id):
 
     double_chord_recommend_dict, single_chord_recommend_dict = ccs.get_top_three_similar_chord_music(music.url,
                                                                                                          music.subject,
-                                                                                                         JSON_PATH)
+                                                                                                         JSON_PATH,
+                                                                                                     audio_path='audio_file_download/update_recommend')
     if(not music.isAdded):
-        ccs.add_recommend_database(music.url, JSON_PATH)
+        ccs.add_recommend_database(music.url, JSON_PATH, audio_path='audio_file_download/update_recommend')
         music.isAdded = True
         music.save()
 

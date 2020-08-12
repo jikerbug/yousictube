@@ -1,0 +1,66 @@
+{
+    "double_chord": {
+        "[MV] IU(\uc544\uc774\uc720) _ Ending Scene(\uc774\ub7f0\u00a0\uc5d4\ub529)": {
+            "total_count": 2,
+            "chord_count": {
+                "F#maj7-Abm7": 1,
+                "Ebm7-F#/G#": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Rh5ok0ljrzA"
+        },
+        "MASN  Hate Me! (Official Video)": {
+            "total_count": 2,
+            "chord_count": {
+                "Abm7-F#": 1,
+                "Abm7b5-Ebm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=qF1LWTHOdg0"
+        },
+        "Renni Rucci \u2013 Solid Chick (Official Music Video)": {
+            "total_count": 2,
+            "chord_count": {
+                "Bmaj7-C#6": 2
+            },
+            "url": "https://www.youtube.com/watch?v=2Jq9mjYuBCM"
+        }
+    },
+    "single_chord": {
+        "MASN  Hate Me! (Official Video)": {
+            "total_count": 53,
+            "chord_count": {
+                "Bmaj7": 16,
+                "F#maj7": 2,
+                "F#": 15,
+                "C#6": 4,
+                "Abm7": 10,
+                "Ebm": 3,
+                "B6": 2,
+                "Abm7b5": 1
+            },
+            "url": "https://www.youtube.com/watch?v=qF1LWTHOdg0"
+        },
+        "Maroon 5  Memories (Official Video)": {
+            "total_count": 42,
+            "chord_count": {
+                "F#": 20,
+                "Ebm": 5,
+                "Ebm7": 7,
+                "B6": 6,
+                "F#maj7": 1,
+                "Abm7": 3
+            },
+            "url": "https://www.youtube.com/watch?v=SlPhMPnQ58k"
+        },
+        "Drake  Toosie Slide": {
+            "total_count": 38,
+            "chord_count": {
+                "B6": 7,
+                "F#": 6,
+                "Abm7": 15,
+                "F#maj7": 1,
+                "F#/G#": 9
+            },
+            "url": "https://www.youtube.com/watch?v=xWggTb45brM"
+        }
+    }
+}

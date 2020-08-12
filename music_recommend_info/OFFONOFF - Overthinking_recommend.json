@@ -1,0 +1,69 @@
+{
+    "double_chord": {
+        "Full Stop (\ub9c8\uce68\ud45c)g": {
+            "total_count": 5,
+            "chord_count": {
+                "Emaj7-F#7": 1,
+                "C#m-Eb7": 1,
+                "Emaj7-Eb7": 1,
+                "Eb7-Abm": 2
+            },
+            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+        },
+        "[MV] IU(\uc544\uc774\uc720) _ Through the Night(\ubc24\ud3b8\uc9c0)": {
+            "total_count": 4,
+            "chord_count": {
+                "Eb-Abmaj7": 4
+            },
+            "url": "https://www.youtube.com/watch?v=BzYnNdJhZQw"
+        },
+        "Alec Benjamin  Oh My God (Tour Video)": {
+            "total_count": 3,
+            "chord_count": {
+                "Eb-Abmaj7": 3
+            },
+            "url": "https://www.youtube.com/watch?v=BbmcEtFDnuA"
+        }
+    },
+    "single_chord": {
+        "Full Stop (\ub9c8\uce68\ud45c)g": {
+            "total_count": 45,
+            "chord_count": {
+                "Ab": 4,
+                "C#m7": 7,
+                "Emaj7": 6,
+                "F#7": 6,
+                "C#m": 3,
+                "Abm": 5,
+                "B/D#": 2,
+                "Eb7": 3,
+                "Ebm7": 2,
+                "Ebm7b5": 2,
+                "Ab7": 3,
+                "Eb": 2
+            },
+            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+        },
+        "Lady Gaga, Ariana Grande  Rain On Me (Official Music Video)": {
+            "total_count": 40,
+            "chord_count": {
+                "C#m7": 17,
+                "Amaj7": 20,
+                "C#m": 3
+            },
+            "url": "https://www.youtube.com/watch?v=AoAm4om0wTs"
+        },
+        "Square (2017)": {
+            "total_count": 34,
+            "chord_count": {
+                "Abmaj7": 10,
+                "Ab": 13,
+                "Eb": 6,
+                "Eb7/G": 2,
+                "Eb7": 2,
+                "Cm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=_ZkUb7iIOqQ"
+        }
+    }
+}

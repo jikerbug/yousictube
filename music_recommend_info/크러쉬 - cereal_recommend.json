@@ -1,0 +1,72 @@
+{
+    "double_chord": {
+        "Jam Jam (\uc7bc\uc7bc)": {
+            "total_count": 15,
+            "chord_count": {
+                "Am7-Em7": 6,
+                "D7-E": 1,
+                "E-Am7": 2,
+                "Em7-Am": 2,
+                "G6-Am7": 2,
+                "Em7-Am7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=KWjDSRdIFgc"
+        },
+        "Jonas Brothers  What A Man Gotta Do (Official Video)": {
+            "total_count": 12,
+            "chord_count": {
+                "E-A": 12
+            },
+            "url": "https://www.youtube.com/watch?v=XejVB_fba04"
+        },
+        "Lorde - Tennis Court (Flume Remix)": {
+            "total_count": 11,
+            "chord_count": {
+                "Dm7-Em7": 9,
+                "Em7-Am7": 1,
+                "Am7-Bm7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=8ATu1BiOPZA"
+        }
+    },
+    "single_chord": {
+        "Maroon 5  Girls Like You ft. Cardi B (Official Music Video)": {
+            "total_count": 66,
+            "chord_count": {
+                "C": 31,
+                "Am7": 11,
+                "Am": 20,
+                "G6": 3,
+                "Dm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=aJOTlE1K90k"
+        },
+        "[Official Audio] OOHYO \uc6b0\ud6a8 _ Dandelion \ubbfc\ub4e4\ub808 (full ver.)": {
+            "total_count": 66,
+            "chord_count": {
+                "D": 16,
+                "Em7": 16,
+                "A": 12,
+                "D7": 5,
+                "D/A": 3,
+                "F#m7": 5,
+                "Bm7": 1,
+                "Am7": 2,
+                "G6": 4,
+                "G/A": 1,
+                "C/D": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Kaq4LFM47I0"
+        },
+        "Hero The Band  Are You Happy Now (Official Music Video)": {
+            "total_count": 62,
+            "chord_count": {
+                "Bm7": 25,
+                "A": 23,
+                "E": 13,
+                "F#m7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "double_chord": {
+        "Billie Eilish  everything i wanted": {
+            "total_count": 37,
+            "chord_count": {
+                "Dmaj7-E": 19,
+                "C#m-Dmaj7": 16,
+                "D6-Dmaj7": 1,
+                "E-Dmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=EgBJmlPo8Xw"
+        },
+        "Hero The Band  Are You Happy Now (Official Music Video)": {
+            "total_count": 24,
+            "chord_count": {
+                "Bm7-A": 18,
+                "Bm7-A6": 3,
+                "A6-Bm7": 2,
+                "A-Dmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
+        },
+        "[2020 \uc218\ub3c4\uc804 \uc2dc\uc98c3] \ud55c\uc591\ub300 SHOWDOWN  BLOSSOM": {
+            "total_count": 15,
+            "chord_count": {
+                "C#m-Dmaj7": 1,
+                "A6-C#m7": 1,
+                "C#m7-D6": 4,
+                "Bm7-C#m7": 2,
+                "C#m7-Dmaj7": 2,
+                "Dmaj7-C#m7": 3,
+                "F#m-C#m": 1,
+                "A-Dmaj7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=gg6z2PsTtsg"
+        }
+    },
+    "single_chord": {
+        "Billie Eilish  everything i wanted": {
+            "total_count": 72,
+            "chord_count": {
+                "Dmaj7": 22,
+                "E": 25,
+                "C#m": 22,
+                "D6": 1,
+                "F#m": 2
+            },
+            "url": "https://www.youtube.com/watch?v=EgBJmlPo8Xw"
+        },
+        "Hero The Band  Are You Happy Now (Official Music Video)": {
+            "total_count": 70,
+            "chord_count": {
+                "Bm7": 25,
+                "A": 23,
+                "E": 13,
+                "A6": 6,
+                "Amaj7": 1,
+                "Dmaj7": 1,
+                "F#m": 1
+            },
+            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
+        },
+        "[2020 \uc218\ub3c4\uc804 \uc2dc\uc98c3] \ud55c\uc591\ub300 SHOWDOWN  BLOSSOM": {
+            "total_count": 55,
+            "chord_count": {
+                "Dmaj7": 6,
+                "C#m": 6,
+                "A6": 4,
+                "C#m7": 14,
+                "Amaj7": 3,
+                "A": 3,
+                "D6": 6,
+                "F#m": 10,
+                "Bm7": 3
+            },
+            "url": "https://www.youtube.com/watch?v=gg6z2PsTtsg"
+        }
+    }
+}

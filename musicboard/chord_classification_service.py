@@ -69,32 +69,33 @@ class _Chord_Classification_Service:
         return prediction_list
 
 
-    def add_recommend_database(self, url, json_path):
+    def add_recommend_database(self, url, json_path, audio_path):
         """
         ' 목적 : 음원의 유튜브 url으로부터 추출한, 해당 음원의 코드 정보와 url을 입력받은 json_path에 저장하는 함수 (코드 정보는 vamp 플러그인으로부터 추출)
         ' 리턴값 : 없음
         """
 
         # 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 파일을 제거하여 youtube_dl 오류방지
-        files = glob.glob("*.mp4")
+        files = glob.glob(audio_path + "/*.mp4")
         for x in files:
             if not os.path.isdir(x):
                 os.remove(x)
 
         ydl_opts = {
             'format': 'best',
+            'outtmpl': audio_path + '/%(title)s.%(ext)s',
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
-        files = glob.glob("*.mp4")
+        files = glob.glob(audio_path + "/*.mp4")
         audio_file_name = ''
 
         signal, sr = 0, 0
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = filename[0]
+                audio_file_name = filename[0].split(audio_path + '\\')[1]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
@@ -124,10 +125,7 @@ class _Chord_Classification_Service:
         with open(json_path, 'r', encoding='utf-8') as f:
             chord_list_dict = json.load(f)
 
-        #추출된 기본 오디오 파일 이름에서 가장 마지막에 위치한 '-' 뒤에 붙는 id값을 없애 json의 키값으로 지정
-        dict_key_music_name = ''
-        for idx in range(len(audio_file_name.split('-')) - 1):
-            dict_key_music_name += audio_file_name.split('-')[idx]
+        dict_key_music_name = audio_file_name
 
         if dict_key_music_name not in chord_list_dict:
             chord_list_dict[dict_key_music_name] = double_chord_list_with_url
@@ -135,33 +133,30 @@ class _Chord_Classification_Service:
                 json.dump(chord_list_dict, fp, indent=4, ensure_ascii=False)
 
 
-    def LSTM_load_audio_data_from_url(self, url):
+    def LSTM_load_audio_data_from_url(self, url, audio_path):
         """
         ' 목적 : 음원의 유튜브 url로부터 음원의 코드정보(by tensorflow)와 박자정보를 추출하는 함수
         ' 리턴값 : 1. 예측된 코드와 코드의 출현시간값 리스트 / 2. 예측된 박자의 시간값 리스트 / 3. vamp 플러그인이 박자를 성공적으로 추출했는지 확인하는 Boolean값
         """
 
         # 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 파일을 제거하여 youtube_dl 오류방지
-        files = glob.glob("*.mp4")
+        files = glob.glob(audio_path + "/*.mp4")
         for x in files:
             if not os.path.isdir(x):
                 os.remove(x)
 
         ydl_opts = {
             'format': 'best',
-
+            'outtmpl': audio_path + '/%(title)s.%(ext)s',
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
-        files = glob.glob("*.mp4")
-        audio_file_name = ''
+        files = glob.glob(audio_path + "/*.mp4")
 
         signal, sr = 0, 0
         for x in files:
             if not os.path.isdir(x):
-                filename = os.path.splitext(x)
-                audio_file_name = filename[0]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
@@ -211,18 +206,16 @@ class _Chord_Classification_Service:
 
         # 마지막 코드(chord)의 특성값 추출 시간간격 설정
         start = int(chord_timestamp_list[-1] * SAMPLES_TO_CONSIDER)
-        interval_chroma_list = []
-        if (end - start >= 40960):
-            interval_signal = signal[start:start + 40960]
-            interval_chroma_list = vamp.collect(interval_signal, sr, "nnls-chroma:nnls-chroma", output="bothchroma")
-            interval_chroma_list = list(interval_chroma_list['matrix'])[1].tolist()
-        else:
-            interval_signal = signal[start:]
-            interval_chroma_list = vamp.collect(interval_signal, sr, "nnls-chroma:nnls-chroma", output="bothchroma")
-            interval_chroma_list = list(interval_chroma_list['matrix'])[1].tolist()
-            if (len(interval_chroma_list) < 20):
-                while (len(interval_chroma_list) != 20):
-                    interval_chroma_list.append(interval_chroma_list[-1])
+        last_interval_signal = signal[start:]
+        interval_chroma_list = vamp.collect(last_interval_signal, sr, "nnls-chroma:nnls-chroma", output="bothchroma")
+        interval_chroma_list = list(interval_chroma_list['matrix'])[1].tolist()
+        if (len(interval_chroma_list) > 20):
+            interval_chroma_list = interval_chroma_list[:21]
+            if (len(interval_chroma_list) == 21):
+                interval_chroma_list.pop()  # 간혹 21 나오는 경우가 있어서 끝값 삭제
+        elif (len(interval_chroma_list) < 20):
+            while (len(interval_chroma_list) != 20):
+                interval_chroma_list.append(interval_chroma_list[-1])
 
         temp_dict = {"timestamp": chord_timestamp_list[-1], "chromagram": interval_chroma_list}
         bothchroma_list.append(temp_dict)
@@ -233,32 +226,33 @@ class _Chord_Classification_Service:
         return LSTM_model_predicted_chord_list, beat_list, isEmptyBeatList
 
 
-    def load_audio_data_from_url(self, url):
+    def load_audio_data_from_url(self, url, audio_path):
         """
         ' 목적 : 음원의 유튜브 url로부터 음원의 코드정보(by vamp plugin)와 박자정보를 추출하는 함수
-        ' 리턴값 : 1. 예측된 코드와 코드의 출현시간값 리스트 / 2. 예측된 박자의 시간값 리스트 / 3. 다운로드 받은 오디오 파일명/  4. vamp 플러그인이 박자를 성공적으로 추출했는지 확인하는 Boolean값
+        ' 리턴값 : 1. 예측된 코드와 코드의 출현시간값 리스트 / 2. 예측된 박자의 시간값 리스트 / 3. 다운로드 받은 오디오 파일명 /  4. vamp 플러그인이 박자를 성공적으로 추출했는지 확인하는 Boolean값
         """
 
         # 사용자가 앱을 수행하다 중단했을시, 제거되지 않고 남아있는 파일을 제거하여 youtube_dl 오류방지
-        files = glob.glob("*.mp4")
+        files = glob.glob(audio_path + "/*.mp4")
         for x in files:
             if not os.path.isdir(x):
                 os.remove(x)
 
         ydl_opts = {
             'format': 'best',
+            'outtmpl': audio_path + '/%(title)s.%(ext)s',
         }
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
-        files = glob.glob("*.mp4")
+        files = glob.glob(audio_path + "/*.mp4")
         audio_file_name = ''
 
         signal, sr = 0, 0
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = filename[0]
+                audio_file_name = filename[0].split(audio_path + '\\')[1]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
@@ -280,15 +274,12 @@ class _Chord_Classification_Service:
         for i in predicted_beat_list['list']:
             beat_list.append(float(i['timestamp']))
 
-        audio_file_name_new = ''
-        for idx in range(len(audio_file_name.split('-')) - 1):
-            audio_file_name_new += audio_file_name.split('-')[idx]
 
-        return chord_list, beat_list, audio_file_name_new, isEmptyBeatList
+        return chord_list, beat_list, audio_file_name, isEmptyBeatList
 
 
 
-    def make_music_sheet(self, url, title, isLSTM):
+    def make_music_sheet(self, url, title, isLSTM, audio_path):
         """
         ' 목적 : 음원의 유튜브 url로부터 해당 음원의 악보 이미지 파일을 생성하고 저장하는 함수
         ' 리턴값 : 저장한 악보 이미지 파일명
@@ -299,9 +290,9 @@ class _Chord_Classification_Service:
         isEmptyBeatList = False
 
         if(isLSTM):
-            chord_list, beat_list, isEmptyBeatList = self.LSTM_load_audio_data_from_url(url)
+            chord_list, beat_list, isEmptyBeatList = self.LSTM_load_audio_data_from_url(url, audio_path)
         else:
-            chord_list, beat_list, audio_file_name, isEmptyBeatList = self.load_audio_data_from_url(url)
+            chord_list, beat_list, audio_file_name, isEmptyBeatList = self.load_audio_data_from_url(url, audio_path)
 
         text = ''
         sheet_width = 0
@@ -444,13 +435,13 @@ class _Chord_Classification_Service:
 
 
 
-    def get_top_three_similar_chord_music(self, url, music_subject, json_path):
+    def get_top_three_similar_chord_music(self, url, music_subject, json_path, audio_path):
         """
         ' 목적 : 음원의 유튜브 url로부터 얻은 연속코드와 단일코드 정보를 기준으로 가장 유사한 3가지 음악을 찾아내고 해당 정보를 저장하는 함수
         ' 리턴값 : 1. 연속코드기반 탑3 추천 리스트 / 2. 단일코드기반 탑3 추천 리스트
         """
 
-        chord_list_with_timestamp, beat_list, audio_file_name, isEmptyBeatList = self.load_audio_data_from_url(url)
+        chord_list_with_timestamp, beat_list, audio_file_name, isEmptyBeatList = self.load_audio_data_from_url(url, audio_path)
 
         # 모든 코드정보가 포함된 추천음악 리스트를 저장한 json 데이터 불러오기
         with open(json_path, 'r', encoding='utf-8') as f:
