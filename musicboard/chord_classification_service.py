@@ -38,8 +38,9 @@ import tensorflow.keras as keras #pip install tensorflow-cpu
 from PIL import Image, ImageDraw, ImageFont # pip install pillow
 
 """
+(포맷오류 날 경우)
 리눅스 : sudo apt-get ffmpeg
-conda install -c conda-forge ffmpeg (포맷오류 날 경우)
+conda install -c conda-forge ffmpeg 
 """
 
 SAMPLES_TO_CONSIDER = 22050 # 오디오 샘플 값 추출시 1초에 해당하는 값.
@@ -421,7 +422,7 @@ class _Chord_Classification_Service:
             # -------------------------------------------------------------------------------------------------------- #
 
 
-        font = ImageFont.truetype('C:/Windows/Fonts/batang.ttc', 45) # 주의! 운영체제 별로 폰트경로 재설정 필요
+        font = ImageFont.truetype('batang.ttc', 45) # 주의! 운영체제 별로 폰트경로 재설정 필요
         img = Image.new(mode='RGB', size=(sheet_width, sheet_height * 90), color='#FFF')
         draw = ImageDraw.Draw(img)
         draw.text((50, 50), text, font=font, fill='#000')
