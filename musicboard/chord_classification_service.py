@@ -29,13 +29,18 @@ import vamp # 음원의 signal와 sample rate로부터, 1. bothchromagram 데이
 
 import glob
 import os.path
-import youtube_dl
+import youtube_dl # pip install youtube_dl / pip install ffmpeg
 import json
 
 import numpy as np
 import tensorflow.keras as keras #pip install tensorflow-cpu
 
 from PIL import Image, ImageDraw, ImageFont # pip install pillow
+
+"""
+리눅스 : sudo apt-get ffmpeg
+conda install -c conda-forge ffmpeg (포맷오류 날 경우)
+"""
 
 SAMPLES_TO_CONSIDER = 22050 # 오디오 샘플 값 추출시 1초에 해당하는 값.
 MODEL_PATH = 'model_final_ver3.h5'
@@ -95,7 +100,7 @@ class _Chord_Classification_Service:
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = filename[0].split(audio_path + '\\')[1]
+                audio_file_name = filename[0].split(audio_path + '/')[1]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
@@ -252,7 +257,7 @@ class _Chord_Classification_Service:
         for x in files:
             if not os.path.isdir(x):
                 filename = os.path.splitext(x)
-                audio_file_name = filename[0].split(audio_path + '\\')[1]
+                audio_file_name = filename[0].split(audio_path + '/')[1]
                 signal, sr = librosa.load(x)
                 os.remove(x)
 
