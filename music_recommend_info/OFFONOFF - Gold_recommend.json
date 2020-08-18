@@ -1,0 +1,61 @@
+{
+    "double_chord": {
+        "Renni Rucci \u2013 Solid Chick (Official Music Video)": {
+            "total_count": 8,
+            "chord_count": {
+                "Bmaj7-Bbm7": 8
+            },
+            "url": "https://www.youtube.com/watch?v=2Jq9mjYuBCM"
+        },
+        "Full Stop (\ub9c8\uce68\ud45c)g": {
+            "total_count": 1,
+            "chord_count": {
+                "Eb-Abm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=ytapKNCMM"
+        },
+        "Love Alone (\uadf8\ub807\uac8c \uc0ac\ub791\uc740)": {
+            "total_count": 1,
+            "chord_count": {
+                "C#6-Ebm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=ph1n5HCT7vU"
+        }
+    },
+    "single_chord": {
+        "Anuel AA , Bad Bunny  Hasta Que Dios Diga ( Video Oficial )": {
+            "total_count": 50,
+            "chord_count": {
+                "C#6": 18,
+                "Eb": 19,
+                "Bbm": 7,
+                "Bbm7": 4,
+                "Bb7": 2
+            },
+            "url": "https://www.youtube.com/watch?v=nCzwGVKpjpo"
+        },
+        "Renni Rucci \u2013 Solid Chick (Official Music Video)": {
+            "total_count": 42,
+            "chord_count": {
+                "Ebm": 9,
+                "Bmaj7": 14,
+                "C#6": 3,
+                "Bbm7": 10,
+                "Ebm7": 5,
+                "Abm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=2Jq9mjYuBCM"
+        },
+        "MASN  Hate Me! (Official Video)": {
+            "total_count": 40,
+            "chord_count": {
+                "Bmaj7": 16,
+                "Abm": 7,
+                "C#6": 4,
+                "Abm7": 10,
+                "Ebm": 3
+            },
+            "url": "https://www.youtube.com/watch?v=qF1LWTHOdg0"
+        }
+    }
+}

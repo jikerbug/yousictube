@@ -1,5 +1,79 @@
 {
     "double_chord": {
+        "[2020 \uc218\ub3c4\uc804 \uc2dc\uc98c3] \ud55c\uc591\ub300 SHOWDOWN  BLOSSOM": {
+            "total_count": 75,
+            "chord_count": {
+                "Dmaj7-C#m": 2,
+                "C#m-A/B": 2,
+                "A/B-C#m": 2,
+                "C#m-Dmaj7": 1,
+                "C#m-C#7": 1,
+                "C#7-A6": 1,
+                "A6-C#m7": 1,
+                "C#m7-A6": 2,
+                "A6-Abm7b5/Gb": 1,
+                "Abm7b5/Gb-Amaj7": 1,
+                "Amaj7-C#m7": 2,
+                "C#m7-A": 1,
+                "A-C#m": 1,
+                "C#m-Amaj7": 1,
+                "C#m7-D6": 4,
+                "D6-C#m7": 3,
+                "C#m7-F#m": 4,
+                "F#m-Abm7b5": 1,
+                "Abm7b5-F#m": 2,
+                "F#m-C#m7": 4,
+                "F#m-Bm7": 1,
+                "Bm7-C#m7": 2,
+                "A6-Bm6": 1,
+                "Bm6-A/B": 1,
+                "A/B-D6": 1,
+                "D6-E7": 1,
+                "E7-A": 1,
+                "A-Bm7": 1,
+                "Bm7-F#m7": 1,
+                "F#m7-D6": 1,
+                "D6-E/D": 1,
+                "E/D-A/C#": 1,
+                "A/C#-Bm7": 1,
+                "C#m7-Dmaj7": 2,
+                "Dmaj7-C#m7": 3,
+                "F#m-C#m": 1,
+                "C#m-Abm7b5/Gb": 1,
+                "Abm7b5/Gb-A": 1,
+                "A-Dmaj7": 1,
+                "D6-Abm7b5": 1,
+                "F#m-E6": 1,
+                "E6-Dmaj7": 1,
+                "Dmaj7-Bm6": 1,
+                "Bm6-Amaj7": 1,
+                "Amaj7-F#m": 1,
+                "F#m-B6": 1,
+                "B6-A6": 1,
+                "A6-Abm7": 1,
+                "Abm7-F#m": 1,
+                "F#m-C#7/E#": 1,
+                "C#7/E#-F#m": 1,
+                "C#m7-F#m7": 1,
+                "F#m7-Abm": 1,
+                "Abm-F#m7": 1
+            },
+            "url": "https://www.youtube.com/watch?v=gg6z2PsTtsg"
+        },
+        "Boat": {
+            "total_count": 20,
+            "chord_count": {
+                "A6-C#m7": 3,
+                "Bm7-C#m7": 5,
+                "C#m7-Dmaj7": 3,
+                "Dmaj7-C#m7": 5,
+                "C#m-Dmaj7": 1,
+                "A-Dmaj7": 1,
+                "F#m-C#m": 1,
+                "C#m7-D6": 1
+            },
+            "url": "https://www.youtube.com/watch?v=xmwWUYwVJbE"
+        },
         "Billie Eilish  everything i wanted": {
             "total_count": 18,
             "chord_count": {
@@ -8,27 +82,38 @@
                 "E6-Dmaj7": 1
             },
             "url": "https://www.youtube.com/watch?v=EgBJmlPo8Xw"
-        },
-        "Lady Gaga, Ariana Grande  Rain On Me (Official Music Video)": {
-            "total_count": 16,
-            "chord_count": {
-                "Amaj7-C#m7": 13,
-                "F#m-C#m": 1,
-                "C#m-Amaj7": 1,
-                "A6-C#m7": 1
-            },
-            "url": "https://www.youtube.com/watch?v=AoAm4om0wTs"
-        },
-        "Hero The Band  Are You Happy Now (Official Music Video)": {
-            "total_count": 12,
-            "chord_count": {
-                "A-Bm7": 11,
-                "A-Dmaj7": 1
-            },
-            "url": "https://www.youtube.com/watch?v=Hdz6JekY254"
         }
     },
     "single_chord": {
+        "[2020 \uc218\ub3c4\uc804 \uc2dc\uc98c3] \ud55c\uc591\ub300 SHOWDOWN  BLOSSOM": {
+            "total_count": 76,
+            "chord_count": {
+                "Dmaj7": 6,
+                "C#m": 6,
+                "A/B": 3,
+                "C#7": 1,
+                "A6": 4,
+                "C#m7": 14,
+                "Abm7b5/Gb": 2,
+                "Amaj7": 3,
+                "A": 3,
+                "D6": 6,
+                "F#m": 10,
+                "Abm7b5": 2,
+                "Bm7": 3,
+                "Bm6": 2,
+                "E7": 1,
+                "F#m7": 3,
+                "E/D": 1,
+                "A/C#": 1,
+                "E6": 1,
+                "B6": 1,
+                "Abm7": 1,
+                "C#7/E#": 1,
+                "Abm": 1
+            },
+            "url": "https://www.youtube.com/watch?v=gg6z2PsTtsg"
+        },
         "Hero The Band  Are You Happy Now (Official Music Video)": {
             "total_count": 62,
             "chord_count": {
@@ -56,18 +141,6 @@
                 "C#m": 2
             },
             "url": "https://www.youtube.com/watch?v=m8jZunevga8"
-        },
-        "Billie Eilish  everything i wanted": {
-            "total_count": 51,
-            "chord_count": {
-                "Dmaj7": 22,
-                "C#m": 22,
-                "D6": 1,
-                "C#7": 1,
-                "F#m": 2,
-                "E6": 3
-            },
-            "url": "https://www.youtube.com/watch?v=EgBJmlPo8Xw"
         }
     }
 }
